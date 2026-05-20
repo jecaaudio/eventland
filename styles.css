@@ -56,13 +56,20 @@ a {
 
 .brand-mark {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.32);
   font-weight: 800;
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .brand strong,
@@ -91,7 +98,10 @@ a {
   min-height: 46px;
   align-items: center;
   justify-content: center;
+  border: 0;
   border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
   font-weight: 800;
 }
 
@@ -176,6 +186,13 @@ h3 {
   line-height: 1.45;
 }
 
+.en {
+  display: block;
+  margin-top: 8px;
+  color: inherit;
+  opacity: 0.78;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -249,6 +266,12 @@ h3 {
 .steps p {
   color: var(--muted);
   line-height: 1.65;
+}
+
+.service-card p.en,
+.package-card p.en,
+.steps p.en {
+  margin-top: -6px;
 }
 
 .packages {
@@ -326,6 +349,13 @@ h3 {
   max-width: 720px;
 }
 
+.contact .en {
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
 .contact-form {
   display: grid;
   gap: 16px;
@@ -376,6 +406,10 @@ textarea {
   color: var(--muted);
   background: var(--paper);
   font-size: 14px;
+}
+
+.footer p:last-child {
+  max-width: 760px;
 }
 
 .footer p {

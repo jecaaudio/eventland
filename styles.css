@@ -56,20 +56,19 @@ a {
 
 .brand-mark {
   display: grid;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.32);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   font-weight: 800;
-  overflow: hidden;
 }
 
 .brand-mark img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .brand strong,
@@ -90,6 +89,38 @@ a {
   color: rgba(255, 255, 255, 0.84);
   font-size: 14px;
   font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-switch {
+  display: inline-flex;
+  min-height: 38px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.lang-option {
+  min-width: 42px;
+  border: 0;
+  padding: 0 10px;
+  color: rgba(255, 255, 255, 0.78);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.lang-option.active {
+  color: var(--ink);
+  background: var(--white);
 }
 
 .header-cta,
@@ -422,8 +453,11 @@ textarea {
     align-items: flex-start;
   }
 
-  .nav,
   .header-cta {
+    display: none;
+  }
+
+  .nav {
     display: none;
   }
 

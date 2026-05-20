@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Eventland | Event planning, decor and production by JECA Audio</title>
+    <title>Eventland | Eventos, decoraci&oacute;n y producci&oacute;n por JECA Audio</title>
     <meta
       name="description"
-      content="Eventland organizes, decorates and produces events with lighting, sound, photography and technical support by JECA Audio."
+      content="Eventland organiza, decora y produce eventos con iluminaci&oacute;n, sonido, fotograf&iacute;a y apoyo t&eacute;cnico de JECA Audio."
     />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +22,7 @@
     <header class="site-header">
       <a class="brand" href="#inicio" aria-label="Eventland home">
         <span class="brand-mark">
-          <img src="assets/eventland-logo-small.jpg" alt="" />
+          <img src="assets/eventland-mark.png" alt="" />
         </span>
         <span>
           <strong>Eventland</strong>
@@ -28,197 +30,186 @@
         </span>
       </a>
       <nav class="nav" aria-label="Principal">
-        <a href="#servicios">Servicios / Services</a>
-        <a href="#paquetes">Paquetes / Packages</a>
-        <a href="#proceso">Proceso / Process</a>
-        <a href="#contacto">Contacto / Contact</a>
+        <a href="#servicios" data-i18n="navServices">Servicios</a>
+        <a href="#paquetes" data-i18n="navPackages">Paquetes</a>
+        <a href="#proceso" data-i18n="navProcess">Proceso</a>
+        <a href="#contacto" data-i18n="navContact">Contacto</a>
       </nav>
-      <a class="header-cta" href="#contacto">Cotizar / Quote</a>
+      <div class="header-actions">
+        <div class="language-switch" aria-label="Cambiar idioma">
+          <button type="button" class="lang-option active" data-lang="es">ES</button>
+          <button type="button" class="lang-option" data-lang="en">EN</button>
+        </div>
+        <a class="header-cta" href="#contacto" data-i18n="quoteCta">Cotizar evento</a>
+      </div>
     </header>
 
     <main>
       <section id="inicio" class="hero">
         <img
           src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1800&q=80"
-          alt="Event hall with professional lighting, stage, sound system and photographer"
+          alt="Sal&oacute;n de eventos decorado con iluminaci&oacute;n profesional"
+          data-i18n-alt="heroAlt"
         />
         <div class="hero-shade"></div>
         <div class="hero-content">
-          <p class="eyebrow">Eventos completos en un solo equipo / Full events, one team</p>
+          <p class="eyebrow" data-i18n="heroEyebrow">Eventos completos en un solo equipo</p>
           <h1>Eventland</h1>
-          <p class="hero-copy">
-            Decoraci&oacute;n, organizaci&oacute;n, producci&oacute;n, iluminaci&oacute;n, sonido y fotograf&iacute;a para eventos memorables.
-            <span class="en">Decor, planning, production, lighting, sound and photography for memorable events.</span>
+          <p class="hero-copy" data-i18n="heroCopy">
+            Decoraci&oacute;n, organizaci&oacute;n, producci&oacute;n, iluminaci&oacute;n, sonido y fotograf&iacute;a para eventos memorables,
+            con la calidad t&eacute;cnica de JECA Audio.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#contacto">Quiero mi evento / Plan my event</a>
-            <a class="button secondary" href="#paquetes">Ver paquetes / View packages</a>
+            <a class="button primary" href="#contacto" data-i18n="heroPrimary">Quiero mi evento</a>
+            <a class="button secondary" href="#paquetes" data-i18n="heroSecondary">Ver paquetes</a>
           </div>
         </div>
       </section>
 
       <section id="servicios" class="section services">
         <div class="section-heading">
-          <p class="eyebrow">Lo que ofrecemos / What we offer</p>
-          <h2>Todo lo que tu evento necesita</h2>
-          <p>
+          <p class="eyebrow" data-i18n="servicesEyebrow">Lo que ofrecemos</p>
+          <h2 data-i18n="servicesTitle">Todo lo que tu evento necesita</h2>
+          <p data-i18n="servicesCopy">
             Desde una celebraci&oacute;n familiar hasta una producci&oacute;n empresarial, unimos dise&ntilde;o, log&iacute;stica y tecnolog&iacute;a
             para que el evento se vea bien, suene bien y fluya sin estr&eacute;s.
-            <span class="en">
-              From family celebrations to corporate productions, we bring design, logistics and technology together so your event looks great, sounds great and runs smoothly.
-            </span>
           </p>
         </div>
 
         <div class="service-grid">
           <article class="service-card">
             <span>01</span>
-            <h3>Organizaci&oacute;n / Planning</h3>
-            <p>Planificaci&oacute;n, coordinaci&oacute;n del d&iacute;a, agenda, proveedores y detalles clave.</p>
-            <p class="en">Planning, day-of coordination, schedule, vendors and key event details.</p>
+            <h3 data-i18n="servicePlanningTitle">Organizaci&oacute;n</h3>
+            <p data-i18n="servicePlanningCopy">Planificaci&oacute;n, coordinaci&oacute;n del d&iacute;a, agenda, proveedores y detalles clave para que todo ocurra a tiempo.</p>
           </article>
           <article class="service-card">
             <span>02</span>
-            <h3>Decoraci&oacute;n / Decor</h3>
-            <p>Concepto visual, montaje, ambientaci&oacute;n, mesas, flores, fondos y detalles.</p>
-            <p class="en">Visual concept, setup, atmosphere, tables, florals, backdrops and details.</p>
+            <h3 data-i18n="serviceDecorTitle">Decoraci&oacute;n</h3>
+            <p data-i18n="serviceDecorCopy">Concepto visual, montaje, ambientaci&oacute;n, mesas, flores, fondos y detalles que elevan la experiencia.</p>
           </article>
           <article class="service-card">
             <span>03</span>
-            <h3>Iluminaci&oacute;n / Lighting</h3>
-            <p>Luces ambientales, efectos para pista, escenarios y momentos destacados.</p>
-            <p class="en">Ambient lighting, dance floor effects, stage looks and highlight moments.</p>
+            <h3 data-i18n="serviceLightingTitle">Iluminaci&oacute;n</h3>
+            <p data-i18n="serviceLightingCopy">Luces ambientales, efectos para pista, escenarios, entradas especiales y momentos destacados.</p>
           </article>
           <article class="service-card">
             <span>04</span>
-            <h3>Sonido JECA Audio / Sound</h3>
-            <p>Audio profesional para ceremonia, recepci&oacute;n, m&uacute;sica y presentaciones.</p>
-            <p class="en">Professional audio for ceremonies, receptions, music and presentations.</p>
+            <h3 data-i18n="serviceSoundTitle">Sonido JECA Audio</h3>
+            <p data-i18n="serviceSoundCopy">Audio profesional para ceremonia, recepci&oacute;n, m&uacute;sica, animaci&oacute;n, presentaciones y producci&oacute;n en vivo.</p>
           </article>
           <article class="service-card">
             <span>05</span>
-            <h3>Producci&oacute;n / Production</h3>
-            <p>Montaje t&eacute;cnico, manejo de tiempos, tarima, micr&oacute;fonos y soporte audiovisual.</p>
-            <p class="en">Technical setup, event timing, stage, microphones and audiovisual support.</p>
+            <h3 data-i18n="serviceProductionTitle">Producci&oacute;n</h3>
+            <p data-i18n="serviceProductionCopy">Montaje t&eacute;cnico, manejo de tiempos, soporte de evento, tarima, micr&oacute;fonos y experiencia audiovisual.</p>
           </article>
           <article class="service-card">
             <span>06</span>
-            <h3>Fotograf&iacute;a / Photography</h3>
-            <p>Cobertura de momentos importantes, detalles, invitados y ambiente.</p>
-            <p class="en">Coverage of important moments, details, guests and the event atmosphere.</p>
+            <h3 data-i18n="servicePhotoTitle">Fotograf&iacute;a</h3>
+            <p data-i18n="servicePhotoCopy">Cobertura de momentos importantes, detalles, invitados, ambiente y contenido para recordar y compartir.</p>
           </article>
         </div>
       </section>
 
       <section id="paquetes" class="section packages">
         <div class="section-heading compact">
-          <p class="eyebrow">Paquetes / Packages</p>
-          <h2>Opciones claras para cada evento</h2>
-          <p class="en">Clear options for every type of event.</p>
+          <p class="eyebrow" data-i18n="packagesEyebrow">Paquetes</p>
+          <h2 data-i18n="packagesTitle">Opciones claras para cada evento</h2>
         </div>
 
         <div class="package-grid">
           <article class="package-card">
-            <h3>Evento Esencial / Essential Event</h3>
-            <p>Para celebraciones peque&ntilde;as que necesitan orden, estilo y sonido confiable.</p>
-            <p class="en">For smaller celebrations that need structure, style and reliable sound.</p>
+            <h3 data-i18n="essentialTitle">Evento Esencial</h3>
+            <p data-i18n="essentialCopy">Para celebraciones peque&ntilde;as que necesitan orden, estilo y sonido confiable.</p>
             <ul>
-              <li>Coordinaci&oacute;n b&aacute;sica / Basic coordination</li>
-              <li>Decoraci&oacute;n puntual / Focused decor</li>
-              <li>Sonido JECA Audio / JECA Audio sound</li>
-              <li>Iluminaci&oacute;n ambiental / Ambient lighting</li>
+              <li data-i18n="essentialItem1">Coordinaci&oacute;n b&aacute;sica</li>
+              <li data-i18n="essentialItem2">Decoraci&oacute;n puntual</li>
+              <li data-i18n="essentialItem3">Sonido JECA Audio</li>
+              <li data-i18n="essentialItem4">Iluminaci&oacute;n ambiental</li>
             </ul>
-            <a href="#contacto">Solicitar precio / Request pricing</a>
+            <a href="#contacto" data-i18n="essentialCta">Solicitar precio</a>
           </article>
 
           <article class="package-card featured">
-            <p class="tag">M&aacute;s vendido / Most popular</p>
-            <h3>Experiencia Completa / Complete Experience</h3>
-            <p>Ideal para bodas, quincea&ntilde;os, cumplea&ntilde;os, graduaciones y eventos privados.</p>
-            <p class="en">Ideal for weddings, quincea&ntilde;eras, birthdays, graduations and private events.</p>
+            <p class="tag" data-i18n="popularTag">M&aacute;s vendido</p>
+            <h3 data-i18n="completeTitle">Experiencia Completa</h3>
+            <p data-i18n="completeCopy">Ideal para bodas, quincea&ntilde;os, cumplea&ntilde;os, graduaciones y eventos privados.</p>
             <ul>
-              <li>Organizaci&oacute;n y montaje / Planning and setup</li>
-              <li>Decoraci&oacute;n personalizada / Custom decor</li>
-              <li>Sonido e iluminaci&oacute;n profesional / Professional sound and lighting</li>
-              <li>Producci&oacute;n y fotograf&iacute;a / Production and photography</li>
+              <li data-i18n="completeItem1">Organizaci&oacute;n y montaje</li>
+              <li data-i18n="completeItem2">Decoraci&oacute;n personalizada</li>
+              <li data-i18n="completeItem3">Sonido e iluminaci&oacute;n profesional</li>
+              <li data-i18n="completeItem4">Producci&oacute;n y fotograf&iacute;a</li>
             </ul>
-            <a href="#contacto">Cotizar ahora / Get a quote</a>
+            <a href="#contacto" data-i18n="completeCta">Cotizar ahora</a>
           </article>
 
           <article class="package-card">
-            <h3>Producci&oacute;n Premium / Premium Production</h3>
-            <p>Para eventos corporativos, lanzamientos, conciertos peque&ntilde;os y experiencias de alto impacto.</p>
-            <p class="en">For corporate events, launches, small concerts and high-impact experiences.</p>
+            <h3 data-i18n="premiumTitle">Producci&oacute;n Premium</h3>
+            <p data-i18n="premiumCopy">Para eventos corporativos, lanzamientos, conciertos peque&ntilde;os y experiencias de alto impacto.</p>
             <ul>
-              <li>Direcci&oacute;n t&eacute;cnica / Technical direction</li>
-              <li>Iluminaci&oacute;n esc&eacute;nica / Stage lighting</li>
-              <li>Audio profesional avanzado / Advanced professional audio</li>
-              <li>Fotograf&iacute;a y contenido / Photography and content</li>
+              <li data-i18n="premiumItem1">Direcci&oacute;n t&eacute;cnica</li>
+              <li data-i18n="premiumItem2">Iluminaci&oacute;n esc&eacute;nica</li>
+              <li data-i18n="premiumItem3">Audio profesional avanzado</li>
+              <li data-i18n="premiumItem4">Fotograf&iacute;a y contenido</li>
             </ul>
-            <a href="#contacto">Hablar con Eventland / Talk to Eventland</a>
+            <a href="#contacto" data-i18n="premiumCta">Hablar con Eventland</a>
           </article>
         </div>
       </section>
 
       <section id="proceso" class="section process">
         <div class="section-heading">
-          <p class="eyebrow">C&oacute;mo trabajamos / How we work</p>
-          <h2>De la idea al montaje final</h2>
-          <p class="en">From the first idea to the final setup.</p>
+          <p class="eyebrow" data-i18n="processEyebrow">C&oacute;mo trabajamos</p>
+          <h2 data-i18n="processTitle">De la idea al montaje final</h2>
         </div>
         <div class="steps">
           <div>
             <strong>1</strong>
-            <h3>Escuchamos tu idea / We listen</h3>
-            <p>Tipo de evento, fecha, lugar, cantidad de invitados, estilo y presupuesto.</p>
-            <p class="en">Event type, date, venue, guest count, style and budget.</p>
+            <h3 data-i18n="step1Title">Escuchamos tu idea</h3>
+            <p data-i18n="step1Copy">Tipo de evento, fecha, lugar, cantidad de invitados, estilo y presupuesto.</p>
           </div>
           <div>
             <strong>2</strong>
-            <h3>Armamos la propuesta / We build the plan</h3>
-            <p>Seleccionamos servicios, equipo t&eacute;cnico, decoraci&oacute;n y plan de producci&oacute;n.</p>
-            <p class="en">We select services, technical equipment, decor and the production plan.</p>
+            <h3 data-i18n="step2Title">Armamos la propuesta</h3>
+            <p data-i18n="step2Copy">Seleccionamos servicios, equipo t&eacute;cnico, decoraci&oacute;n y plan de producci&oacute;n.</p>
           </div>
           <div>
             <strong>3</strong>
-            <h3>Producimos el evento / We produce the event</h3>
-            <p>Coordinamos montaje, sonido, luces, decoraci&oacute;n, fotograf&iacute;a y ejecuci&oacute;n del d&iacute;a.</p>
-            <p class="en">We coordinate setup, sound, lights, decor, photography and event-day execution.</p>
+            <h3 data-i18n="step3Title">Producimos el evento</h3>
+            <p data-i18n="step3Copy">Coordinamos montaje, sonido, luces, decoraci&oacute;n, fotograf&iacute;a y ejecuci&oacute;n del d&iacute;a.</p>
           </div>
         </div>
       </section>
 
       <section id="contacto" class="contact">
         <div>
-          <p class="eyebrow">Cotiza tu fecha / Request your date</p>
-          <h2>Hagamos que tu evento se vea y se escuche incre&iacute;ble.</h2>
-          <p class="en">Let us make your event look and sound incredible.</p>
+          <p class="eyebrow" data-i18n="contactEyebrow">Cotiza tu fecha</p>
+          <h2 data-i18n="contactTitle">Hagamos que tu evento se vea y se escuche incre&iacute;ble.</h2>
         </div>
         <form class="contact-form">
           <label>
-            Nombre / Name
-            <input type="text" name="nombre" placeholder="Tu nombre / Your name" required />
+            <span data-i18n="nameLabel">Nombre</span>
+            <input type="text" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="namePlaceholder" required />
           </label>
           <label>
-            Tipo de evento / Event type
+            <span data-i18n="typeLabel">Tipo de evento</span>
             <select name="tipo">
-              <option>Boda / Wedding</option>
-              <option>Quincea&ntilde;os / Quincea&ntilde;era</option>
-              <option>Cumplea&ntilde;os / Birthday</option>
-              <option>Evento corporativo / Corporate event</option>
-              <option>Otro evento / Other event</option>
+              <option data-i18n="optionWedding">Boda</option>
+              <option data-i18n="optionQuince">Quincea&ntilde;os</option>
+              <option data-i18n="optionBirthday">Cumplea&ntilde;os</option>
+              <option data-i18n="optionCorporate">Evento corporativo</option>
+              <option data-i18n="optionOther">Otro evento</option>
             </select>
           </label>
           <label>
-            Fecha aproximada / Approximate date
-            <input type="text" name="fecha" placeholder="Ej. Julio 2026 / Ex. July 2026" />
+            <span data-i18n="dateLabel">Fecha aproximada</span>
+            <input type="text" name="fecha" placeholder="Ej. Julio 2026" data-i18n-placeholder="datePlaceholder" />
           </label>
           <label>
-            Mensaje / Message
-            <textarea name="mensaje" placeholder="Cuentanos que necesitas / Tell us what you need"></textarea>
+            <span data-i18n="messageLabel">Mensaje</span>
+            <textarea name="mensaje" placeholder="Cu&eacute;ntanos qu&eacute; necesitas" data-i18n-placeholder="messagePlaceholder"></textarea>
           </label>
-          <button class="button primary full" type="submit">
-            Enviar solicitud / Send request
+          <button class="button primary full" type="submit" data-i18n="submitButton">
+            Enviar solicitud
           </button>
         </form>
       </section>
@@ -226,27 +217,229 @@
 
     <footer class="footer">
       <p>Eventland by JECA Audio</p>
-      <p>Organizaci&oacute;n, decoraci&oacute;n, sonido, iluminaci&oacute;n, producci&oacute;n y fotograf&iacute;a para eventos. / Planning, decor, sound, lighting, production and photography for events.</p>
+      <p data-i18n="footerCopy">Organizaci&oacute;n, decoraci&oacute;n, sonido, iluminaci&oacute;n, producci&oacute;n y fotograf&iacute;a para eventos.</p>
     </footer>
     <script>
+      const translations = {
+        es: {
+          pageTitle: "Eventland | Eventos, decoracion y produccion por JECA Audio",
+          metaDescription: "Eventland organiza, decora y produce eventos con iluminacion, sonido, fotografia y apoyo tecnico de JECA Audio.",
+          heroAlt: "Salon de eventos decorado con iluminacion profesional",
+          navServices: "Servicios",
+          navPackages: "Paquetes",
+          navProcess: "Proceso",
+          navContact: "Contacto",
+          quoteCta: "Cotizar evento",
+          heroEyebrow: "Eventos completos en un solo equipo",
+          heroCopy: "Decoracion, organizacion, produccion, iluminacion, sonido y fotografia para eventos memorables, con la calidad tecnica de JECA Audio.",
+          heroPrimary: "Quiero mi evento",
+          heroSecondary: "Ver paquetes",
+          servicesEyebrow: "Lo que ofrecemos",
+          servicesTitle: "Todo lo que tu evento necesita",
+          servicesCopy: "Desde una celebracion familiar hasta una produccion empresarial, unimos diseno, logistica y tecnologia para que el evento se vea bien, suene bien y fluya sin estres.",
+          servicePlanningTitle: "Organizacion",
+          servicePlanningCopy: "Planificacion, coordinacion del dia, agenda, proveedores y detalles clave para que todo ocurra a tiempo.",
+          serviceDecorTitle: "Decoracion",
+          serviceDecorCopy: "Concepto visual, montaje, ambientacion, mesas, flores, fondos y detalles que elevan la experiencia.",
+          serviceLightingTitle: "Iluminacion",
+          serviceLightingCopy: "Luces ambientales, efectos para pista, escenarios, entradas especiales y momentos destacados.",
+          serviceSoundTitle: "Sonido JECA Audio",
+          serviceSoundCopy: "Audio profesional para ceremonia, recepcion, musica, animacion, presentaciones y produccion en vivo.",
+          serviceProductionTitle: "Produccion",
+          serviceProductionCopy: "Montaje tecnico, manejo de tiempos, soporte de evento, tarima, microfonos y experiencia audiovisual.",
+          servicePhotoTitle: "Fotografia",
+          servicePhotoCopy: "Cobertura de momentos importantes, detalles, invitados, ambiente y contenido para recordar y compartir.",
+          packagesEyebrow: "Paquetes",
+          packagesTitle: "Opciones claras para cada evento",
+          essentialTitle: "Evento Esencial",
+          essentialCopy: "Para celebraciones pequenas que necesitan orden, estilo y sonido confiable.",
+          essentialItem1: "Coordinacion basica",
+          essentialItem2: "Decoracion puntual",
+          essentialItem3: "Sonido JECA Audio",
+          essentialItem4: "Iluminacion ambiental",
+          essentialCta: "Solicitar precio",
+          popularTag: "Mas vendido",
+          completeTitle: "Experiencia Completa",
+          completeCopy: "Ideal para bodas, quinceanos, cumpleanos, graduaciones y eventos privados.",
+          completeItem1: "Organizacion y montaje",
+          completeItem2: "Decoracion personalizada",
+          completeItem3: "Sonido e iluminacion profesional",
+          completeItem4: "Produccion y fotografia",
+          completeCta: "Cotizar ahora",
+          premiumTitle: "Produccion Premium",
+          premiumCopy: "Para eventos corporativos, lanzamientos, conciertos pequenos y experiencias de alto impacto.",
+          premiumItem1: "Direccion tecnica",
+          premiumItem2: "Iluminacion escenica",
+          premiumItem3: "Audio profesional avanzado",
+          premiumItem4: "Fotografia y contenido",
+          premiumCta: "Hablar con Eventland",
+          processEyebrow: "Como trabajamos",
+          processTitle: "De la idea al montaje final",
+          step1Title: "Escuchamos tu idea",
+          step1Copy: "Tipo de evento, fecha, lugar, cantidad de invitados, estilo y presupuesto.",
+          step2Title: "Armamos la propuesta",
+          step2Copy: "Seleccionamos servicios, equipo tecnico, decoracion y plan de produccion.",
+          step3Title: "Producimos el evento",
+          step3Copy: "Coordinamos montaje, sonido, luces, decoracion, fotografia y ejecucion del dia.",
+          contactEyebrow: "Cotiza tu fecha",
+          contactTitle: "Hagamos que tu evento se vea y se escuche increible.",
+          nameLabel: "Nombre",
+          namePlaceholder: "Tu nombre",
+          typeLabel: "Tipo de evento",
+          optionWedding: "Boda",
+          optionQuince: "Quinceanos",
+          optionBirthday: "Cumpleanos",
+          optionCorporate: "Evento corporativo",
+          optionOther: "Otro evento",
+          dateLabel: "Fecha aproximada",
+          datePlaceholder: "Ej. Julio 2026",
+          messageLabel: "Mensaje",
+          messagePlaceholder: "Cuentanos que necesitas",
+          submitButton: "Enviar solicitud",
+          footerCopy: "Organizacion, decoracion, sonido, iluminacion, produccion y fotografia para eventos.",
+          emailSubject: "Cotizacion Eventland",
+          emailName: "Nombre",
+          emailType: "Tipo de evento",
+          emailDate: "Fecha aproximada",
+          emailMessage: "Mensaje",
+        },
+        en: {
+          pageTitle: "Eventland | Event planning, decor and production by JECA Audio",
+          metaDescription: "Eventland organizes, decorates and produces events with lighting, sound, photography and technical support by JECA Audio.",
+          heroAlt: "Event hall with professional lighting, stage, sound system and photographer",
+          navServices: "Services",
+          navPackages: "Packages",
+          navProcess: "Process",
+          navContact: "Contact",
+          quoteCta: "Get a quote",
+          heroEyebrow: "Full events, one team",
+          heroCopy: "Decor, planning, production, lighting, sound and photography for memorable events, with the technical quality of JECA Audio.",
+          heroPrimary: "Plan my event",
+          heroSecondary: "View packages",
+          servicesEyebrow: "What we offer",
+          servicesTitle: "Everything your event needs",
+          servicesCopy: "From family celebrations to corporate productions, we bring design, logistics and technology together so your event looks great, sounds great and runs smoothly.",
+          servicePlanningTitle: "Planning",
+          servicePlanningCopy: "Planning, day-of coordination, schedule, vendors and key details so everything happens on time.",
+          serviceDecorTitle: "Decor",
+          serviceDecorCopy: "Visual concept, setup, atmosphere, tables, florals, backdrops and details that elevate the experience.",
+          serviceLightingTitle: "Lighting",
+          serviceLightingCopy: "Ambient lighting, dance floor effects, stages, special entrances and highlighted moments.",
+          serviceSoundTitle: "JECA Audio Sound",
+          serviceSoundCopy: "Professional audio for ceremonies, receptions, music, hosting, presentations and live production.",
+          serviceProductionTitle: "Production",
+          serviceProductionCopy: "Technical setup, timing, event support, stage, microphones and audiovisual experience.",
+          servicePhotoTitle: "Photography",
+          servicePhotoCopy: "Coverage of important moments, details, guests, atmosphere and content to remember and share.",
+          packagesEyebrow: "Packages",
+          packagesTitle: "Clear options for every event",
+          essentialTitle: "Essential Event",
+          essentialCopy: "For smaller celebrations that need structure, style and reliable sound.",
+          essentialItem1: "Basic coordination",
+          essentialItem2: "Focused decor",
+          essentialItem3: "JECA Audio sound",
+          essentialItem4: "Ambient lighting",
+          essentialCta: "Request pricing",
+          popularTag: "Most popular",
+          completeTitle: "Complete Experience",
+          completeCopy: "Ideal for weddings, quinceaneras, birthdays, graduations and private events.",
+          completeItem1: "Planning and setup",
+          completeItem2: "Custom decor",
+          completeItem3: "Professional sound and lighting",
+          completeItem4: "Production and photography",
+          completeCta: "Get a quote",
+          premiumTitle: "Premium Production",
+          premiumCopy: "For corporate events, launches, small concerts and high-impact experiences.",
+          premiumItem1: "Technical direction",
+          premiumItem2: "Stage lighting",
+          premiumItem3: "Advanced professional audio",
+          premiumItem4: "Photography and content",
+          premiumCta: "Talk to Eventland",
+          processEyebrow: "How we work",
+          processTitle: "From the idea to the final setup",
+          step1Title: "We listen to your idea",
+          step1Copy: "Event type, date, venue, guest count, style and budget.",
+          step2Title: "We build the proposal",
+          step2Copy: "We select services, technical equipment, decor and the production plan.",
+          step3Title: "We produce the event",
+          step3Copy: "We coordinate setup, sound, lighting, decor, photography and event-day execution.",
+          contactEyebrow: "Request your date",
+          contactTitle: "Let us make your event look and sound incredible.",
+          nameLabel: "Name",
+          namePlaceholder: "Your name",
+          typeLabel: "Event type",
+          optionWedding: "Wedding",
+          optionQuince: "Quinceanera",
+          optionBirthday: "Birthday",
+          optionCorporate: "Corporate event",
+          optionOther: "Other event",
+          dateLabel: "Approximate date",
+          datePlaceholder: "Ex. July 2026",
+          messageLabel: "Message",
+          messagePlaceholder: "Tell us what you need",
+          submitButton: "Send request",
+          footerCopy: "Planning, decor, sound, lighting, production and photography for events.",
+          emailSubject: "Eventland Quote Request",
+          emailName: "Name",
+          emailType: "Event type",
+          emailDate: "Approximate date",
+          emailMessage: "Message",
+        },
+      };
+
       const form = document.querySelector(".contact-form");
+      const languageButtons = document.querySelectorAll(".lang-option");
+      let currentLanguage = localStorage.getItem("eventland-language") || "es";
+
+      function setLanguage(language) {
+        currentLanguage = language;
+        const copy = translations[language];
+
+        document.documentElement.lang = language;
+        document.title = copy.pageTitle;
+        document.querySelector("meta[name='description']").setAttribute("content", copy.metaDescription);
+
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          element.textContent = copy[element.dataset.i18n];
+        });
+
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+          element.setAttribute("placeholder", copy[element.dataset.i18nPlaceholder]);
+        });
+
+        document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+          element.setAttribute("alt", copy[element.dataset.i18nAlt]);
+        });
+
+        languageButtons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === language);
+        });
+
+        localStorage.setItem("eventland-language", language);
+      }
+
+      languageButtons.forEach((button) => {
+        button.addEventListener("click", () => setLanguage(button.dataset.lang));
+      });
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
 
+        const copy = translations[currentLanguage];
         const data = new FormData(form);
-        const subject = "Eventland Quote Request";
         const body = [
-          `Name / Nombre: ${data.get("nombre") || ""}`,
-          `Event type / Tipo de evento: ${data.get("tipo") || ""}`,
-          `Approximate date / Fecha aproximada: ${data.get("fecha") || ""}`,
+          `${copy.emailName}: ${data.get("nombre") || ""}`,
+          `${copy.emailType}: ${data.get("tipo") || ""}`,
+          `${copy.emailDate}: ${data.get("fecha") || ""}`,
           "",
-          "Message / Mensaje:",
+          `${copy.emailMessage}:`,
           data.get("mensaje") || "",
         ].join("\n");
 
-        window.location.href = `mailto:contacto@jecaaudio.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:contacto@jecaaudio.com?subject=${encodeURIComponent(copy.emailSubject)}&body=${encodeURIComponent(body)}`;
       });
+
+      setLanguage(currentLanguage);
     </script>
   </body>
 </html>

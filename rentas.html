@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eventland | Rentas para eventos</title>
+    <meta
+      name="description"
+      content="Renta de manteles, mesas, sillas, decoracion y articulos basicos para eventos con cotizacion por WhatsApp."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/eventland-mark.svg" />
+    <link rel="apple-touch-icon" href="assets/eventland-mark.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="rentals-page">
+    <header class="rental-header">
+      <a class="brand rental-brand" href="index.html" aria-label="Volver a Eventland">
+        <span class="brand-mark">
+          <img src="assets/eventland-mark.svg" alt="" />
+        </span>
+        <span>
+          <strong>Eventland</strong>
+        </span>
+      </a>
+      <nav class="rental-nav" aria-label="Navegacion de rentas">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+      <a class="header-cta" href="https://wa.me/15025332210?text=Hola%20Eventland%2C%20quiero%20cotizar%20una%20renta." target="_blank" rel="noopener noreferrer">Cotizar renta</a>
+    </header>
+
+    <main>
+      <section class="rental-hero">
+        <div>
+          <p class="eyebrow">Rentas para eventos</p>
+          <h1>Arma tu cotizaci&oacute;n de inventario.</h1>
+          <p>
+            Selecciona categor&iacute;as, cantidades, colores y detalles. Esto funciona como una tienda de cotizaci&oacute;n:
+            no pagas aqu&iacute;, solo env&iacute;as tu lista por WhatsApp para confirmar disponibilidad.
+          </p>
+        </div>
+      </section>
+
+      <section class="rental-shell" aria-label="Cotizador de rentas">
+        <aside class="rental-categories">
+          <p class="eyebrow">Categor&iacute;as</p>
+          <div id="category-list" class="category-list"></div>
+          <article class="jeca-card">
+            <span>Audio, luces y producci&oacute;n</span>
+            <h2>Recomendamos JECA Audio.</h2>
+            <p>
+              Para sonido, iluminaci&oacute;n y producci&oacute;n t&eacute;cnica recomendamos JECA Audio, pero trabajamos con
+              cualquier proveedor que prefieras.
+            </p>
+            <a href="https://wa.me/15025332210?text=Hola%20Eventland%2C%20quiero%20informacion%20sobre%20audio%20y%20luces%20para%20mi%20evento." target="_blank" rel="noopener noreferrer">Consultar audio y luces</a>
+          </article>
+        </aside>
+
+        <section class="rental-products">
+          <div class="rental-toolbar">
+            <div>
+              <p class="eyebrow">Inventario inicial</p>
+              <h2 id="category-title">Manteles</h2>
+            </div>
+            <span id="item-count">0 art&iacute;culos</span>
+          </div>
+
+          <div id="product-grid" class="product-grid"></div>
+        </section>
+
+        <aside class="quote-panel">
+          <p class="eyebrow">Tu lista</p>
+          <h2>Cotizaci&oacute;n</h2>
+          <div id="quote-list" class="quote-list">
+            <p class="empty-quote">Agrega art&iacute;culos para crear tu lista.</p>
+          </div>
+          <button class="button primary full" type="button" id="send-quote">Enviar por WhatsApp</button>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const inventory = [
+        { category: "Manteles", items: [
+          { name: "Mantel redondo", types: ["Redondo 90 in", "Redondo 108 in", "Redondo 120 in"], colors: ["Blanco", "Negro", "Marfil", "Dorado", "Rojo", "Azul"] },
+          { name: "Mantel rectangular", types: ["6 pies", "8 pies", "Banquete"], colors: ["Blanco", "Negro", "Marfil", "Dorado", "Rojo", "Azul"] },
+          { name: "Mantel stretch", types: ["Mesa cocktail", "Mesa 6 pies", "Mesa 8 pies"], colors: ["Blanco", "Negro"] },
+        ]},
+        { category: "Mesas", items: [
+          { name: "Mesa redonda", types: ["48 in", "60 in", "72 in"], colors: ["N/A"] },
+          { name: "Mesa rectangular", types: ["6 pies", "8 pies"], colors: ["N/A"] },
+          { name: "Mesa cocktail", types: ["Alta", "Baja"], colors: ["N/A"] },
+        ]},
+        { category: "Sillas", items: [
+          { name: "Silla plegable", types: ["Basica", "Acolchada"], colors: ["Blanca", "Negra"] },
+          { name: "Silla chiavari", types: ["Standard"], colors: ["Dorada", "Transparente", "Blanca"] },
+          { name: "Cover para silla", types: ["Stretch", "Lazo"], colors: ["Blanco", "Negro", "Dorado"] },
+        ]},
+        { category: "Decoracion", items: [
+          { name: "Arco decorativo", types: ["Redondo", "Cuadrado", "Organico"], colors: ["Dorado", "Blanco", "Negro"] },
+          { name: "Backdrop", types: ["Tela", "Panel", "Personalizado"], colors: ["Blanco", "Negro", "Marfil"] },
+          { name: "Centro de mesa", types: ["Basico", "Floral", "Alto"], colors: ["Segun tema"] },
+        ]},
+        { category: "Mesa y detalles", items: [
+          { name: "Caminos de mesa", types: ["Tela", "Satin", "Lentejuela"], colors: ["Dorado", "Blanco", "Rojo", "Azul"] },
+          { name: "Servilletas", types: ["Tela", "Decorativa"], colors: ["Blanco", "Negro", "Dorado", "Rojo"] },
+          { name: "Cargadores de plato", types: ["Redondo", "Decorativo"], colors: ["Dorado", "Plateado", "Transparente"] },
+        ]},
+      ];
+
+      const categoryList = document.querySelector("#category-list");
+      const productGrid = document.querySelector("#product-grid");
+      const categoryTitle = document.querySelector("#category-title");
+      const itemCount = document.querySelector("#item-count");
+      const quoteList = document.querySelector("#quote-list");
+      const sendQuote = document.querySelector("#send-quote");
+      const quote = [];
+      let currentCategory = inventory[0].category;
+      const categoryImages = {
+        Manteles: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=80",
+        Mesas: "https://images.unsplash.com/photo-1524777313293-86d2ab467344?auto=format&fit=crop&w=900&q=80",
+        Sillas: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80",
+        Decoracion: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80",
+        "Mesa y detalles": "https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=80",
+      };
+      const colorMap = { Azul: "#2f5fa8", Blanca: "#f8f8f4", Blanco: "#f8f8f4", Dorada: "#c99b4a", Dorado: "#c99b4a", Marfil: "#eee4cf", Negra: "#161514", Negro: "#161514", Plateado: "#b7b9bd", Roja: "#b83f45", Rojo: "#b83f45", Transparente: "#dce9ec" };
+
+      function renderColorSwatches(colors) {
+        const swatches = colors.filter((color) => colorMap[color]).map((color) => `<span class="swatch" style="--swatch:${colorMap[color]}" title="${color}"></span>`).join("");
+        return swatches ? `<div class="color-swatches" aria-label="Colores disponibles">${swatches}</div>` : "";
+      }
+
+      function renderCategories() {
+        categoryList.innerHTML = "";
+        inventory.forEach((group) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = group.category;
+          button.className = group.category === currentCategory ? "active" : "";
+          button.addEventListener("click", () => { currentCategory = group.category; renderCategories(); renderProducts(); });
+          categoryList.appendChild(button);
+        });
+      }
+
+      function renderProducts() {
+        const group = inventory.find((entry) => entry.category === currentCategory);
+        categoryTitle.textContent = group.category;
+        itemCount.textContent = `${group.items.length} articulos`;
+        productGrid.innerHTML = "";
+        group.items.forEach((item) => {
+          const card = document.createElement("article");
+          card.className = "product-card";
+          card.innerHTML = `
+            <figure class="product-media"><img src="${categoryImages[group.category]}" alt="${item.name} para renta" loading="lazy" /><figcaption>${item.name}</figcaption></figure>
+            <div><span>${group.category}</span><h3>${item.name}</h3><p>Selecciona cantidad, tipo, color y cualquier detalle importante para confirmar disponibilidad.</p>${renderColorSwatches(item.colors)}</div>
+            <label>Cantidad<input type="number" min="1" value="1" data-field="quantity" /></label>
+            <label>Tipo<select data-field="type">${item.types.map((type) => `<option>${type}</option>`).join("")}</select></label>
+            <label>Color<select data-field="color">${item.colors.map((color) => `<option>${color}</option>`).join("")}</select></label>
+            <label>Nota<input type="text" placeholder="Tema, medidas o preferencia" data-field="note" /></label>
+            <button class="button primary full" type="button">Agregar</button>`;
+          card.querySelector("button").addEventListener("click", () => {
+            quote.push({ category: group.category, name: item.name, quantity: card.querySelector('[data-field="quantity"]').value || "1", type: card.querySelector('[data-field="type"]').value, color: card.querySelector('[data-field="color"]').value, note: card.querySelector('[data-field="note"]').value });
+            renderQuote();
+          });
+          productGrid.appendChild(card);
+        });
+      }
+
+      function renderQuote() {
+        quoteList.innerHTML = "";
+        if (!quote.length) { quoteList.innerHTML = '<p class="empty-quote">Agrega art&iacute;culos para crear tu lista.</p>'; return; }
+        quote.forEach((item, index) => {
+          const row = document.createElement("div");
+          row.className = "quote-item";
+          row.innerHTML = `<div><strong>${item.quantity} x ${item.name}</strong><span>${item.type} / ${item.color}${item.note ? ` / ${item.note}` : ""}</span></div><button type="button" aria-label="Quitar ${item.name}">Quitar</button>`;
+          row.querySelector("button").addEventListener("click", () => { quote.splice(index, 1); renderQuote(); });
+          quoteList.appendChild(row);
+        });
+      }
+
+      sendQuote.addEventListener("click", () => {
+        if (!quote.length) return;
+        const lines = quote.map((item) => `- ${item.quantity} x ${item.name} (${item.category}) | Tipo: ${item.type} | Color: ${item.color}${item.note ? ` | Nota: ${item.note}` : ""}`);
+        const message = `Hola Eventland, quiero cotizar estos articulos:\n\n${lines.join("\n")}`;
+        window.location.href = `https://wa.me/15025332210?text=${encodeURIComponent(message)}`;
+      });
+
+      renderCategories();
+      renderProducts();
+    </script>
+  </body>
+</html>

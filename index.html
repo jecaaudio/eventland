@@ -8,6 +8,14 @@
       name="description"
       content="Eventland organiza, decora y produce eventos con iluminaci&oacute;n, sonido, fotograf&iacute;a y apoyo t&eacute;cnico de JECA Audio."
     />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Eventland | Eventos, decoraci&oacute;n y producci&oacute;n por JECA Audio" />
+    <meta property="og:description" content="Eventland organiza, decora y produce eventos con iluminaci&oacute;n, sonido, fotograf&iacute;a y apoyo t&eacute;cnico de JECA Audio." />
+    <meta property="og:image" content="assets/eventland-logo-small.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eventland | Eventos, decoraci&oacute;n y producci&oacute;n por JECA Audio" />
+    <meta name="twitter:description" content="Eventland organiza, decora y produce eventos con iluminaci&oacute;n, sonido, fotograf&iacute;a y apoyo t&eacute;cnico de JECA Audio." />
+    <meta name="twitter:image" content="assets/eventland-logo-small.jpg" />
     <link rel="icon" type="image/svg+xml" href="assets/eventland-mark.svg" />
     <link rel="apple-touch-icon" href="assets/eventland-mark.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -399,6 +407,10 @@
         document.documentElement.lang = language;
         document.title = copy.pageTitle;
         document.querySelector("meta[name='description']").setAttribute("content", copy.metaDescription);
+        document.querySelector("meta[property='og:title']").setAttribute("content", copy.pageTitle);
+        document.querySelector("meta[property='og:description']").setAttribute("content", copy.metaDescription);
+        document.querySelector("meta[name='twitter:title']").setAttribute("content", copy.pageTitle);
+        document.querySelector("meta[name='twitter:description']").setAttribute("content", copy.metaDescription);
 
         document.querySelectorAll("[data-i18n]").forEach((element) => {
           element.textContent = copy[element.dataset.i18n];

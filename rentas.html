@@ -58,7 +58,7 @@
       </section>
 
       <section class="rental-shell" aria-label="Cotizador de rentas">
-        <aside class="rental-categories">
+        <aside class="rental-categories" aria-label="Categorias de productos">
           <p class="eyebrow">Categor&iacute;as</p>
           <div id="category-list" class="category-list"></div>
           <article class="jeca-card">
@@ -84,7 +84,7 @@
           <div id="product-grid" class="product-grid"></div>
         </section>
 
-        <aside class="quote-panel">
+        <aside class="quote-panel" aria-label="Tu lista de cotizacion">
           <p class="eyebrow">Tu lista</p>
           <h2>Cotizaci&oacute;n</h2>
           <div id="quote-list" class="quote-list">
@@ -197,6 +197,7 @@
           figure.append(img, figcaption);
 
           const info = document.createElement("div");
+          info.className = "product-info";
           const categorySpan = document.createElement("span");
           categorySpan.textContent = group.category;
           const title = document.createElement("h3");

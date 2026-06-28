@@ -265,6 +265,7 @@
 
       function renderQuote() {
         quoteList.replaceChildren();
+        sendQuote.disabled = !quote.length;
         if (!quote.length) {
           const empty = document.createElement("p");
           empty.className = "empty-quote";
@@ -303,6 +304,7 @@
 
       renderCategories();
       renderProducts();
+      renderQuote();
     </script>
   </body>
 </html>

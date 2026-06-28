@@ -245,6 +245,11 @@ h3 {
   color: var(--white);
 }
 
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .section {
   padding: clamp(72px, 9vw, 124px) clamp(18px, 5vw, 72px);
 }

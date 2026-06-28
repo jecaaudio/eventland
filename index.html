@@ -189,7 +189,7 @@
         <form class="contact-form">
           <label>
             <span data-i18n="nameLabel">Nombre</span>
-            <input type="text" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="namePlaceholder" required />
+            <input type="text" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="namePlaceholder" required maxlength="80" />
           </label>
           <label>
             <span data-i18n="typeLabel">Tipo de evento</span>
@@ -203,11 +203,11 @@
           </label>
           <label>
             <span data-i18n="dateLabel">Fecha aproximada</span>
-            <input type="text" name="fecha" placeholder="Ej. Julio 2026" data-i18n-placeholder="datePlaceholder" />
+            <input type="text" name="fecha" placeholder="Ej. Julio 2026" data-i18n-placeholder="datePlaceholder" maxlength="60" />
           </label>
           <label>
             <span data-i18n="messageLabel">Mensaje</span>
-            <textarea name="mensaje" placeholder="Cu&eacute;ntanos qu&eacute; necesitas" data-i18n-placeholder="messagePlaceholder"></textarea>
+            <textarea name="mensaje" placeholder="Cu&eacute;ntanos qu&eacute; necesitas" data-i18n-placeholder="messagePlaceholder" maxlength="1000"></textarea>
           </label>
           <button class="button primary full" type="submit" data-i18n="submitButton">
             Enviar solicitud
@@ -425,6 +425,13 @@
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+
+        const nameField = form.querySelector('[name="nombre"]');
+        if (!nameField.value.trim()) {
+          nameField.value = "";
+          nameField.reportValidity();
+          return;
+        }
 
         const copy = translations[currentLanguage];
         const data = new FormData(form);

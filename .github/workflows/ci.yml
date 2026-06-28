@@ -1,0 +1,39 @@
+name: Revision automatica del sitio
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke-test:
+    name: Probar que el sitio funcione
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Instalar navegador de pruebas
+        run: npx playwright install --with-deps chromium
+
+      - name: Verificar sintaxis de JavaScript
+        run: |
+          for file in index.html rentas.html; do
+            node -e "
+              const fs = require('fs');
+              const html = fs.readFileSync('$file', 'utf8');
+              const matches = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+              for (const match of matches) { new Function(match[1]); }
+              console.log('$file: JavaScript valido');
+            "
+          done
+
+      - name: Ejecutar pruebas del sitio (index.html y rentas.html)
+        run: npm test

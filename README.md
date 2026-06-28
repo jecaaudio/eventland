@@ -60,8 +60,24 @@ Para agregar una categoria nueva, tambien hay que sumar su imagen de portada en 
 
 Los textos de `index.html` viven en el objeto `translations` (claves `es` y `en`) dentro del `<script>` final. Cada texto visible en el HTML usa un atributo `data-i18n="claveDeTraduccion"` que `setLanguage()` resuelve en tiempo de ejecucion. Para agregar un texto nuevo: agrega la clave en ambos idiomas dentro de `translations` y referenciala con `data-i18n` en el HTML.
 
+## Red de seguridad automatica (CI)
+
+Cada vez que se sube codigo a GitHub, una revision automatica (en `.github/workflows/ci.yml`) abre `index.html` y `rentas.html` en un navegador real y comprueba que:
+
+- No haya errores de JavaScript al cargar la pagina.
+- El menu de celular se pueda abrir y cerrar.
+- Se puedan agregar productos a la cotizacion y que el boton de WhatsApp se active.
+
+Si algo se rompe, GitHub marca el cambio con una "X" roja antes de que llegue a producirse un problema real para los usuarios. Para correr esta misma revision en tu computadora:
+
+```bash
+npm install
+npx playwright install --with-deps chromium
+npm test
+```
+
 ## Limitaciones conocidas
 
 - No hay backend: el formulario de contacto abre el cliente de correo del usuario (`mailto:`) y el cotizador de rentas abre WhatsApp; no se guarda nada en un servidor.
-- No hay suite de tests ni linting automatizado.
+- No hay linting automatizado de estilo de codigo (solo la revision funcional de CI descrita arriba).
 - Las imagenes de categoria usan URLs de Unsplash; si el servicio cae, las imagenes no cargan.

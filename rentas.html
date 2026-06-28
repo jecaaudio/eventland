@@ -140,13 +140,24 @@
       };
       const colorMap = { Azul: "#2f5fa8", Blanca: "#f8f8f4", Blanco: "#f8f8f4", Dorada: "#c99b4a", Dorado: "#c99b4a", Marfil: "#eee4cf", Negra: "#161514", Negro: "#161514", Plateado: "#b7b9bd", Roja: "#b83f45", Rojo: "#b83f45", Transparente: "#dce9ec" };
 
-      function renderColorSwatches(colors) {
-        const swatches = colors.filter((color) => colorMap[color]).map((color) => `<span class="swatch" style="--swatch:${colorMap[color]}" title="${color}"></span>`).join("");
-        return swatches ? `<div class="color-swatches" aria-label="Colores disponibles">${swatches}</div>` : "";
+      function appendColorSwatches(container, colors) {
+        const availableColors = colors.filter((color) => colorMap[color]);
+        if (!availableColors.length) return;
+        const swatchContainer = document.createElement("div");
+        swatchContainer.className = "color-swatches";
+        swatchContainer.setAttribute("aria-label", "Colores disponibles");
+        availableColors.forEach((color) => {
+          const swatch = document.createElement("span");
+          swatch.className = "swatch";
+          swatch.style.setProperty("--swatch", colorMap[color]);
+          swatch.title = color;
+          swatchContainer.appendChild(swatch);
+        });
+        container.appendChild(swatchContainer);
       }
 
       function renderCategories() {
-        categoryList.innerHTML = "";
+        categoryList.replaceChildren();
         inventory.forEach((group) => {
           const button = document.createElement("button");
           button.type = "button";
@@ -161,34 +172,124 @@
         const group = inventory.find((entry) => entry.category === currentCategory);
         categoryTitle.textContent = group.category;
         itemCount.textContent = `${group.items.length} articulos`;
-        productGrid.innerHTML = "";
+        productGrid.replaceChildren();
+
         group.items.forEach((item) => {
           const card = document.createElement("article");
           card.className = "product-card";
-          card.innerHTML = `
-            <figure class="product-media"><img src="${categoryImages[group.category]}" alt="${item.name} para renta" loading="lazy" /><figcaption>${item.name}</figcaption></figure>
-            <div><span>${group.category}</span><h3>${item.name}</h3><p>Selecciona cantidad, tipo, color y cualquier detalle importante para confirmar disponibilidad.</p>${renderColorSwatches(item.colors)}</div>
-            <label>Cantidad<input type="number" min="1" value="1" data-field="quantity" /></label>
-            <label>Tipo<select data-field="type">${item.types.map((type) => `<option>${type}</option>`).join("")}</select></label>
-            <label>Color<select data-field="color">${item.colors.map((color) => `<option>${color}</option>`).join("")}</select></label>
-            <label>Nota<input type="text" placeholder="Tema, medidas o preferencia" data-field="note" /></label>
-            <button class="button primary full" type="button">Agregar</button>`;
-          card.querySelector("button").addEventListener("click", () => {
-            quote.push({ category: group.category, name: item.name, quantity: card.querySelector('[data-field="quantity"]').value || "1", type: card.querySelector('[data-field="type"]').value, color: card.querySelector('[data-field="color"]').value, note: card.querySelector('[data-field="note"]').value });
+
+          const figure = document.createElement("figure");
+          figure.className = "product-media";
+          const img = document.createElement("img");
+          img.src = categoryImages[group.category];
+          img.alt = `${item.name} para renta`;
+          img.loading = "lazy";
+          const figcaption = document.createElement("figcaption");
+          figcaption.textContent = item.name;
+          figure.append(img, figcaption);
+
+          const info = document.createElement("div");
+          const categorySpan = document.createElement("span");
+          categorySpan.textContent = group.category;
+          const title = document.createElement("h3");
+          title.textContent = item.name;
+          const description = document.createElement("p");
+          description.textContent = "Selecciona cantidad, tipo, color y cualquier detalle importante para confirmar disponibilidad.";
+          info.append(categorySpan, title, description);
+          appendColorSwatches(info, item.colors);
+
+          const quantityLabel = document.createElement("label");
+          quantityLabel.textContent = "Cantidad";
+          const quantityInput = document.createElement("input");
+          quantityInput.type = "number";
+          quantityInput.min = "1";
+          quantityInput.max = "999";
+          quantityInput.value = "1";
+          quantityInput.required = true;
+          quantityInput.dataset.field = "quantity";
+          quantityLabel.appendChild(quantityInput);
+
+          const typeLabel = document.createElement("label");
+          typeLabel.textContent = "Tipo";
+          const typeSelect = document.createElement("select");
+          typeSelect.dataset.field = "type";
+          item.types.forEach((type) => {
+            const option = document.createElement("option");
+            option.textContent = type;
+            typeSelect.appendChild(option);
+          });
+          typeLabel.appendChild(typeSelect);
+
+          const colorLabel = document.createElement("label");
+          colorLabel.textContent = "Color";
+          const colorSelect = document.createElement("select");
+          colorSelect.dataset.field = "color";
+          item.colors.forEach((color) => {
+            const option = document.createElement("option");
+            option.textContent = color;
+            colorSelect.appendChild(option);
+          });
+          colorLabel.appendChild(colorSelect);
+
+          const noteLabel = document.createElement("label");
+          noteLabel.textContent = "Nota";
+          const noteInput = document.createElement("input");
+          noteInput.type = "text";
+          noteInput.placeholder = "Tema, medidas o preferencia";
+          noteInput.maxLength = 120;
+          noteInput.dataset.field = "note";
+          noteLabel.appendChild(noteInput);
+
+          const addButton = document.createElement("button");
+          addButton.className = "button primary full";
+          addButton.type = "button";
+          addButton.textContent = "Agregar";
+          addButton.addEventListener("click", () => {
+            const quantity = Math.min(999, Math.max(1, parseInt(quantityInput.value, 10) || 1));
+            quantityInput.value = String(quantity);
+            quote.push({
+              category: group.category,
+              name: item.name,
+              quantity,
+              type: typeSelect.value,
+              color: colorSelect.value,
+              note: noteInput.value.trim(),
+            });
             renderQuote();
           });
+
+          card.append(figure, info, quantityLabel, typeLabel, colorLabel, noteLabel, addButton);
           productGrid.appendChild(card);
         });
       }
 
       function renderQuote() {
-        quoteList.innerHTML = "";
-        if (!quote.length) { quoteList.innerHTML = '<p class="empty-quote">Agrega art&iacute;culos para crear tu lista.</p>'; return; }
+        quoteList.replaceChildren();
+        if (!quote.length) {
+          const empty = document.createElement("p");
+          empty.className = "empty-quote";
+          empty.textContent = "Agrega artículos para crear tu lista.";
+          quoteList.appendChild(empty);
+          return;
+        }
         quote.forEach((item, index) => {
           const row = document.createElement("div");
           row.className = "quote-item";
-          row.innerHTML = `<div><strong>${item.quantity} x ${item.name}</strong><span>${item.type} / ${item.color}${item.note ? ` / ${item.note}` : ""}</span></div><button type="button" aria-label="Quitar ${item.name}">Quitar</button>`;
-          row.querySelector("button").addEventListener("click", () => { quote.splice(index, 1); renderQuote(); });
+
+          const info = document.createElement("div");
+          const strong = document.createElement("strong");
+          strong.textContent = `${item.quantity} x ${item.name}`;
+          const span = document.createElement("span");
+          span.textContent = `${item.type} / ${item.color}${item.note ? ` / ${item.note}` : ""}`;
+          info.append(strong, span);
+
+          const removeButton = document.createElement("button");
+          removeButton.type = "button";
+          removeButton.setAttribute("aria-label", `Quitar ${item.name}`);
+          removeButton.textContent = "Quitar";
+          removeButton.addEventListener("click", () => { quote.splice(index, 1); renderQuote(); });
+
+          row.append(info, removeButton);
           quoteList.appendChild(row);
         });
       }

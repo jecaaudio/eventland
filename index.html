@@ -38,7 +38,7 @@
           <small>by JECA Audio</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Principal">
+      <nav class="nav" id="main-nav" aria-label="Principal">
         <a href="#servicios" data-i18n="navServices">Servicios</a>
         <a href="#paquetes" data-i18n="navPackages">Paquetes</a>
         <a href="#proceso" data-i18n="navProcess">Proceso</a>
@@ -50,6 +50,11 @@
           <button type="button" class="lang-option" data-lang="en">EN</button>
         </div>
         <a class="header-cta" href="#contacto" data-i18n="quoteCta">Cotizar evento</a>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
@@ -433,6 +438,23 @@
 
       languageButtons.forEach((button) => {
         button.addEventListener("click", () => setLanguage(button.dataset.lang));
+      });
+
+      const menuToggle = document.querySelector("#menu-toggle");
+      const mainNav = document.querySelector("#main-nav");
+
+      function closeMenu() {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mainNav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
       });
 
       form.addEventListener("submit", (event) => {

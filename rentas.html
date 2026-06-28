@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
   </head>
   <body class="rentals-page">
     <header class="rental-header">
@@ -33,7 +34,7 @@
         <a href="index.html#servicios">Servicios</a>
         <a href="index.html#contacto">Contacto</a>
       </nav>
-      <a class="header-cta" href="https://wa.me/15025332210?text=Hola%20Eventland%2C%20quiero%20cotizar%20una%20renta." target="_blank" rel="noopener noreferrer">Cotizar renta</a>
+      <a class="header-cta" id="header-quote-cta" href="#" target="_blank" rel="noopener noreferrer">Cotizar renta</a>
     </header>
 
     <main>
@@ -59,7 +60,7 @@
               Para sonido, iluminaci&oacute;n y producci&oacute;n t&eacute;cnica recomendamos JECA Audio, pero trabajamos con
               cualquier proveedor que prefieras.
             </p>
-            <a href="https://wa.me/15025332210?text=Hola%20Eventland%2C%20quiero%20informacion%20sobre%20audio%20y%20luces%20para%20mi%20evento." target="_blank" rel="noopener noreferrer">Consultar audio y luces</a>
+            <a href="#" id="audio-lights-cta" target="_blank" rel="noopener noreferrer">Consultar audio y luces</a>
           </article>
         </aside>
 
@@ -114,6 +115,13 @@
           { name: "Cargadores de plato", types: ["Redondo", "Decorativo"], colors: ["Dorado", "Plateado", "Transparente"] },
         ]},
       ];
+
+      function buildWhatsappUrl(message) {
+        return `https://wa.me/${EVENTLAND_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+      }
+
+      document.querySelector("#header-quote-cta").href = buildWhatsappUrl("Hola Eventland, quiero cotizar una renta.");
+      document.querySelector("#audio-lights-cta").href = buildWhatsappUrl("Hola Eventland, quiero informacion sobre audio y luces para mi evento.");
 
       const categoryList = document.querySelector("#category-list");
       const productGrid = document.querySelector("#product-grid");
@@ -189,7 +197,7 @@
         if (!quote.length) return;
         const lines = quote.map((item) => `- ${item.quantity} x ${item.name} (${item.category}) | Tipo: ${item.type} | Color: ${item.color}${item.note ? ` | Nota: ${item.note}` : ""}`);
         const message = `Hola Eventland, quiero cotizar estos articulos:\n\n${lines.join("\n")}`;
-        window.location.href = `https://wa.me/15025332210?text=${encodeURIComponent(message)}`;
+        window.location.href = buildWhatsappUrl(message);
       });
 
       renderCategories();

@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -436,7 +437,7 @@
           data.get("mensaje") || "",
         ].join("\n");
 
-        window.location.href = `mailto:contacto@jecaaudio.com?subject=${encodeURIComponent(copy.emailSubject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:${EVENTLAND_CONFIG.contactEmail}?subject=${encodeURIComponent(copy.emailSubject)}&body=${encodeURIComponent(body)}`;
       });
 
       setLanguage(currentLanguage);

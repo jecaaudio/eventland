@@ -584,12 +584,44 @@ textarea {
 }
 
 .rental-hero {
-  padding: clamp(40px, 7vw, 88px) clamp(18px, 5vw, 72px) clamp(20px, 4vw, 40px);
-  max-width: 760px;
+  position: relative;
+  overflow: hidden;
+  min-height: 42vh;
+  display: grid;
+  align-items: center;
+  color: var(--white);
 }
 
-.rental-hero p:not(.eyebrow) {
-  color: var(--muted);
+.rental-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rental-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(20, 19, 19, 0.88), rgba(20, 19, 19, 0.6) 55%, rgba(20, 19, 19, 0.25)),
+    linear-gradient(0deg, rgba(20, 19, 19, 0.35), rgba(20, 19, 19, 0));
+}
+
+.rental-hero-content {
+  position: relative;
+  max-width: 700px;
+  padding: clamp(56px, 9vw, 96px) clamp(18px, 5vw, 72px) clamp(36px, 6vw, 56px);
+}
+
+.rental-hero-content h1 {
+  font-size: clamp(36px, 5.5vw, 64px);
+  line-height: 1.05;
+  color: var(--white);
+}
+
+.rental-hero-content p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.86);
   font-size: 18px;
   line-height: 1.6;
 }

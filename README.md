@@ -9,7 +9,6 @@ Pagina web bilingue para vender servicios de organizacion, decoracion y producci
 - Iluminacion profesional / Professional lighting
 - Sonido profesional / Professional sound
 - Produccion tecnica / Technical production
-- Fotografia / Photography
 
 ## Archivos principales
 

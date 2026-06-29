@@ -218,6 +218,28 @@
             <input type="text" name="fecha" placeholder="Ej. Julio 2026" data-i18n-placeholder="datePlaceholder" maxlength="60" />
           </label>
           <label>
+            <span data-i18n="guestsLabel">Cantidad de invitados</span>
+            <input type="number" name="invitados" placeholder="Ej. 80" data-i18n-placeholder="guestsPlaceholder" min="1" max="9999" />
+          </label>
+          <label>
+            <span data-i18n="outdoorLabel">&iquest;El evento es en exterior?</span>
+            <select name="exterior">
+              <option value="" data-i18n="optionOutdoorBlank">Selecciona una opci&oacute;n</option>
+              <option data-i18n="optionOutdoorYes">S&iacute;, es en exterior</option>
+              <option data-i18n="optionOutdoorNo">No, es en interior</option>
+              <option data-i18n="optionOutdoorBoth">Tiene espacios de ambos</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="themeLabel">Tema de la decoraci&oacute;n</span>
+            <input type="text" name="tema" placeholder="Ej. Boho, elegante, tropical..." data-i18n-placeholder="themePlaceholder" maxlength="120" />
+          </label>
+          <label>
+            <span data-i18n="photosLabel">Fotos de inspiraci&oacute;n (opcional)</span>
+            <input type="file" name="fotos" accept="image/*" multiple />
+            <small class="field-hint" data-i18n="photosHint">No podemos adjuntar las fotos automaticamente: en cuanto se abra WhatsApp, env&iacute;alas ahi mismo en el chat.</small>
+          </label>
+          <label>
             <span data-i18n="messageLabel">Mensaje</span>
             <textarea name="mensaje" placeholder="Cu&eacute;ntanos qu&eacute; necesitas" data-i18n-placeholder="messagePlaceholder" maxlength="1000"></textarea>
           </label>
@@ -306,6 +328,17 @@
           optionOther: "Otro evento",
           dateLabel: "Fecha aproximada",
           datePlaceholder: "Ej. Julio 2026",
+          guestsLabel: "Cantidad de invitados",
+          guestsPlaceholder: "Ej. 80",
+          outdoorLabel: "\u00bfEl evento es en exterior?",
+          optionOutdoorBlank: "Selecciona una opci\u00f3n",
+          optionOutdoorYes: "S\u00ed, es en exterior",
+          optionOutdoorNo: "No, es en interior",
+          optionOutdoorBoth: "Tiene espacios de ambos",
+          themeLabel: "Tema de la decoraci\u00f3n",
+          themePlaceholder: "Ej. Boho, elegante, tropical...",
+          photosLabel: "Fotos de inspiraci\u00f3n (opcional)",
+          photosHint: "No podemos adjuntar las fotos autom\u00e1ticamente: en cuanto se abra WhatsApp, env\u00edalas ahi mismo en el chat.",
           messageLabel: "Mensaje",
           messagePlaceholder: "Cu\u00e9ntanos qu\u00e9 necesitas",
           submitButton: "Enviar solicitud",
@@ -314,7 +347,11 @@
           emailName: "Nombre",
           emailType: "Tipo de evento",
           emailDate: "Fecha aproximada",
+          emailGuests: "Cantidad de invitados",
+          emailOutdoor: "\u00bfEvento en exterior?",
+          emailTheme: "Tema de decoraci\u00f3n",
           emailMessage: "Mensaje",
+          emailPhotosNote: "Adjunto fotos de inspiraci\u00f3n del tema en este chat de WhatsApp.",
         },
         en: {
           pageTitle: "Eventland | Event planning, decor and production",
@@ -388,6 +425,17 @@
           optionOther: "Other event",
           dateLabel: "Approximate date",
           datePlaceholder: "Ex. July 2026",
+          guestsLabel: "Number of guests",
+          guestsPlaceholder: "Ex. 80",
+          outdoorLabel: "Is the event outdoors?",
+          optionOutdoorBlank: "Select an option",
+          optionOutdoorYes: "Yes, it's outdoors",
+          optionOutdoorNo: "No, it's indoors",
+          optionOutdoorBoth: "Both indoor and outdoor",
+          themeLabel: "Decoration theme",
+          themePlaceholder: "Ex. Boho, elegant, tropical...",
+          photosLabel: "Inspiration photos (optional)",
+          photosHint: "We can't attach the photos automatically: once WhatsApp opens, send them there in the chat.",
           messageLabel: "Message",
           messagePlaceholder: "Tell us what you need",
           submitButton: "Send request",
@@ -396,7 +444,11 @@
           emailName: "Name",
           emailType: "Event type",
           emailDate: "Approximate date",
+          emailGuests: "Number of guests",
+          emailOutdoor: "Outdoors event?",
+          emailTheme: "Decoration theme",
           emailMessage: "Message",
+          emailPhotosNote: "Attaching theme inspiration photos in this WhatsApp chat.",
         },
       };
 
@@ -468,16 +520,32 @@
 
         const copy = translations[currentLanguage];
         const data = new FormData(form);
-        const message = [
+        const photosField = form.querySelector('[name="fotos"]');
+        const lines = [
           `${copy.emailSubject}`,
           "",
           `${copy.emailName}: ${data.get("nombre") || ""}`,
           `${copy.emailType}: ${data.get("tipo") || ""}`,
           `${copy.emailDate}: ${data.get("fecha") || ""}`,
-          "",
-          `${copy.emailMessage}:`,
-          data.get("mensaje") || "",
-        ].join("\n");
+        ];
+
+        if (data.get("invitados")) {
+          lines.push(`${copy.emailGuests}: ${data.get("invitados")}`);
+        }
+        if (data.get("exterior")) {
+          lines.push(`${copy.emailOutdoor}: ${data.get("exterior")}`);
+        }
+        if (data.get("tema")) {
+          lines.push(`${copy.emailTheme}: ${data.get("tema")}`);
+        }
+
+        lines.push("", `${copy.emailMessage}:`, data.get("mensaje") || "");
+
+        if (photosField.files.length) {
+          lines.push("", copy.emailPhotosNote);
+        }
+
+        const message = lines.join("\n");
 
         window.location.href = `https://wa.me/${EVENTLAND_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
       });

@@ -84,7 +84,8 @@
           <div id="product-grid" class="product-grid"></div>
         </section>
 
-        <aside class="quote-panel" aria-label="Tu lista de cotizacion">
+        <aside class="quote-panel" id="quote-panel" aria-label="Tu lista de cotizacion">
+          <button type="button" id="cart-close" class="cart-close" aria-label="Cerrar carrito">&times;</button>
           <p class="eyebrow">Tu lista</p>
           <h2>Cotizaci&oacute;n</h2>
           <div id="quote-list" class="quote-list">
@@ -93,6 +94,13 @@
           <button class="button primary full" type="button" id="send-quote">Enviar por WhatsApp</button>
         </aside>
       </section>
+
+      <div id="cart-backdrop" class="cart-backdrop" hidden></div>
+      <button type="button" id="cart-toggle" class="cart-toggle" aria-label="Ver carrito de cotizacion">
+        <span class="cart-toggle-icon" aria-hidden="true">&#128722;</span>
+        <span>Ver carrito</span>
+        <span id="cart-count" class="cart-count">0</span>
+      </button>
     </main>
 
     <script>
@@ -137,7 +145,26 @@
       const itemCount = document.querySelector("#item-count");
       const quoteList = document.querySelector("#quote-list");
       const sendQuote = document.querySelector("#send-quote");
+      const quotePanel = document.querySelector("#quote-panel");
+      const cartToggle = document.querySelector("#cart-toggle");
+      const cartClose = document.querySelector("#cart-close");
+      const cartBackdrop = document.querySelector("#cart-backdrop");
+      const cartCount = document.querySelector("#cart-count");
       const quote = [];
+
+      function openCart() {
+        quotePanel.classList.add("open");
+        cartBackdrop.hidden = false;
+      }
+
+      function closeCart() {
+        quotePanel.classList.remove("open");
+        cartBackdrop.hidden = true;
+      }
+
+      cartToggle.addEventListener("click", openCart);
+      cartClose.addEventListener("click", closeCart);
+      cartBackdrop.addEventListener("click", closeCart);
       let currentCategory = inventory[0].category;
       const categoryImages = {
         Manteles: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=80",
@@ -275,6 +302,7 @@
       function renderQuote() {
         quoteList.replaceChildren();
         sendQuote.disabled = !quote.length;
+        cartCount.textContent = String(quote.reduce((total, item) => total + item.quantity, 0));
         if (!quote.length) {
           const empty = document.createElement("p");
           empty.className = "empty-quote";

@@ -650,8 +650,11 @@ textarea {
 }
 
 .category-list button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 12px 14px;
   background: var(--white);
   color: var(--ink);
@@ -659,11 +662,23 @@ textarea {
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.category-list button:hover {
+  border-color: var(--gold);
+  transform: translateX(2px);
 }
 
 .category-list button.active {
   border-color: var(--gold);
   background: var(--soft);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.category-icon {
+  font-size: 18px;
+  line-height: 1;
 }
 
 .recommend-card {
@@ -731,6 +746,12 @@ textarea {
   padding: 18px;
   background: var(--white);
   box-shadow: 0 10px 34px rgba(30, 30, 30, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(30, 30, 30, 0.12);
 }
 
 .product-media,
@@ -752,18 +773,23 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.product-media figcaption {
+.product-card:hover .product-media img {
+  transform: scale(1.05);
+}
+
+.price-tag {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 8px 12px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-  color: var(--white);
-  font-size: 13px;
-  font-weight: 700;
+  right: 10px;
+  bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .product-info span {
@@ -858,6 +884,12 @@ textarea {
   font-size: 12px;
 }
 
+.quote-item .quote-subtotal {
+  margin-top: 6px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
 .quote-item button {
   border: 0;
   background: transparent;
@@ -872,6 +904,32 @@ textarea {
   margin: 0;
   color: var(--muted);
   font-size: 14px;
+}
+
+.quote-total-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.quote-total-row span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.quote-total-row strong {
+  font-size: 22px;
+  color: var(--ink);
+}
+
+.quote-disclaimer {
+  margin: -6px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .cart-close,

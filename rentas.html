@@ -96,6 +96,11 @@
           <div id="quote-list" class="quote-list">
             <p class="empty-quote">Agrega art&iacute;culos para crear tu lista.</p>
           </div>
+          <div class="quote-total-row">
+            <span>Total estimado</span>
+            <strong id="quote-total">$0 MXN</strong>
+          </div>
+          <p class="quote-disclaimer">Precio de referencia. Confirmamos disponibilidad y costo final por WhatsApp.</p>
           <button class="button primary full" type="button" id="send-quote">Enviar por WhatsApp</button>
         </aside>
       </section>
@@ -110,30 +115,30 @@
 
     <script>
       const inventory = [
-        { category: "Manteles", items: [
-          { name: "Mantel redondo", types: ["Redondo 90 in", "Redondo 108 in", "Redondo 120 in"], colors: ["Blanco", "Negro", "Marfil", "Dorado", "Rojo", "Azul"] },
-          { name: "Mantel rectangular", types: ["6 pies", "8 pies", "Banquete"], colors: ["Blanco", "Negro", "Marfil", "Dorado", "Rojo", "Azul"] },
-          { name: "Mantel stretch", types: ["Mesa cocktail", "Mesa 6 pies", "Mesa 8 pies"], colors: ["Blanco", "Negro"] },
+        { category: "Manteles", icon: "🎀", items: [
+          { name: "Mantel redondo", price: 80, types: ["Redondo 90 in", "Redondo 108 in", "Redondo 120 in"], colors: ["Blanco", "Negro", "Marfil", "Dorado", "Rojo", "Azul"] },
+          { name: "Mantel rectangular", price: 70, types: ["6 pies", "8 pies", "Banquete"], colors: ["Blanco", "Negro", "Marfil", "Dorado", "Rojo", "Azul"] },
+          { name: "Mantel stretch", price: 90, types: ["Mesa cocktail", "Mesa 6 pies", "Mesa 8 pies"], colors: ["Blanco", "Negro"] },
         ]},
-        { category: "Mesas", items: [
-          { name: "Mesa redonda", types: ["48 in", "60 in", "72 in"], colors: ["N/A"] },
-          { name: "Mesa rectangular", types: ["6 pies", "8 pies"], colors: ["N/A"] },
-          { name: "Mesa cocktail", types: ["Alta", "Baja"], colors: ["N/A"] },
+        { category: "Mesas", icon: "🍽️", items: [
+          { name: "Mesa redonda", price: 120, types: ["48 in", "60 in", "72 in"], colors: ["N/A"] },
+          { name: "Mesa rectangular", price: 100, types: ["6 pies", "8 pies"], colors: ["N/A"] },
+          { name: "Mesa cocktail", price: 90, types: ["Alta", "Baja"], colors: ["N/A"] },
         ]},
-        { category: "Sillas", items: [
-          { name: "Silla plegable", types: ["Basica", "Acolchada"], colors: ["Blanca", "Negra"] },
-          { name: "Silla chiavari", types: ["Standard"], colors: ["Dorada", "Transparente", "Blanca"] },
-          { name: "Cover para silla", types: ["Stretch", "Lazo"], colors: ["Blanco", "Negro", "Dorado"] },
+        { category: "Sillas", icon: "🪑", items: [
+          { name: "Silla plegable", price: 25, types: ["Basica", "Acolchada"], colors: ["Blanca", "Negra"] },
+          { name: "Silla chiavari", price: 45, types: ["Standard"], colors: ["Dorada", "Transparente", "Blanca"] },
+          { name: "Cover para silla", price: 20, types: ["Stretch", "Lazo"], colors: ["Blanco", "Negro", "Dorado"] },
         ]},
-        { category: "Decoracion", items: [
-          { name: "Arco decorativo", types: ["Redondo", "Cuadrado", "Organico"], colors: ["Dorado", "Blanco", "Negro"] },
-          { name: "Backdrop", types: ["Tela", "Panel", "Personalizado"], colors: ["Blanco", "Negro", "Marfil"] },
-          { name: "Centro de mesa", types: ["Basico", "Floral", "Alto"], colors: ["Segun tema"] },
+        { category: "Decoracion", icon: "🎈", items: [
+          { name: "Arco decorativo", price: 600, types: ["Redondo", "Cuadrado", "Organico"], colors: ["Dorado", "Blanco", "Negro"] },
+          { name: "Backdrop", price: 450, types: ["Tela", "Panel", "Personalizado"], colors: ["Blanco", "Negro", "Marfil"] },
+          { name: "Centro de mesa", price: 150, types: ["Basico", "Floral", "Alto"], colors: ["Segun tema"] },
         ]},
-        { category: "Mesa y detalles", items: [
-          { name: "Caminos de mesa", types: ["Tela", "Satin", "Lentejuela"], colors: ["Dorado", "Blanco", "Rojo", "Azul"] },
-          { name: "Servilletas", types: ["Tela", "Decorativa"], colors: ["Blanco", "Negro", "Dorado", "Rojo"] },
-          { name: "Cargadores de plato", types: ["Redondo", "Decorativo"], colors: ["Dorado", "Plateado", "Transparente"] },
+        { category: "Mesa y detalles", icon: "✨", items: [
+          { name: "Caminos de mesa", price: 35, types: ["Tela", "Satin", "Lentejuela"], colors: ["Dorado", "Blanco", "Rojo", "Azul"] },
+          { name: "Servilletas", price: 10, types: ["Tela", "Decorativa"], colors: ["Blanco", "Negro", "Dorado", "Rojo"] },
+          { name: "Cargadores de plato", price: 15, types: ["Redondo", "Decorativo"], colors: ["Dorado", "Plateado", "Transparente"] },
         ]},
       ];
 
@@ -149,6 +154,7 @@
       const categoryTitle = document.querySelector("#category-title");
       const itemCount = document.querySelector("#item-count");
       const quoteList = document.querySelector("#quote-list");
+      const quoteTotal = document.querySelector("#quote-total");
       const sendQuote = document.querySelector("#send-quote");
       const quotePanel = document.querySelector("#quote-panel");
       const cartToggle = document.querySelector("#cart-toggle");
@@ -201,8 +207,14 @@
         inventory.forEach((group) => {
           const button = document.createElement("button");
           button.type = "button";
-          button.textContent = group.category;
           button.className = group.category === currentCategory ? "active" : "";
+          const icon = document.createElement("span");
+          icon.className = "category-icon";
+          icon.setAttribute("aria-hidden", "true");
+          icon.textContent = group.icon;
+          const label = document.createElement("span");
+          label.textContent = group.category;
+          button.append(icon, label);
           button.addEventListener("click", () => { currentCategory = group.category; renderCategories(); renderProducts(); });
           categoryList.appendChild(button);
         });
@@ -224,9 +236,10 @@
           img.src = categoryImages[group.category];
           img.alt = `${item.name} para renta`;
           img.loading = "lazy";
-          const figcaption = document.createElement("figcaption");
-          figcaption.textContent = item.name;
-          figure.append(img, figcaption);
+          const priceTag = document.createElement("span");
+          priceTag.className = "price-tag";
+          priceTag.textContent = `Desde $${item.price} MXN`;
+          figure.append(img, priceTag);
 
           const info = document.createElement("div");
           info.className = "product-info";
@@ -291,6 +304,7 @@
             quote.push({
               category: group.category,
               name: item.name,
+              price: item.price,
               quantity,
               type: typeSelect.value,
               color: colorSelect.value,
@@ -313,9 +327,13 @@
           empty.className = "empty-quote";
           empty.textContent = "Agrega artículos para crear tu lista.";
           quoteList.appendChild(empty);
+          quoteTotal.textContent = "$0 MXN";
           return;
         }
+        let total = 0;
         quote.forEach((item, index) => {
+          const subtotal = item.price * item.quantity;
+          total += subtotal;
           const row = document.createElement("div");
           row.className = "quote-item";
 
@@ -324,7 +342,10 @@
           strong.textContent = `${item.quantity} x ${item.name}`;
           const span = document.createElement("span");
           span.textContent = `${item.type} / ${item.color}${item.note ? ` / ${item.note}` : ""}`;
-          info.append(strong, span);
+          const subtotalSpan = document.createElement("span");
+          subtotalSpan.className = "quote-subtotal";
+          subtotalSpan.textContent = `$${subtotal} MXN`;
+          info.append(strong, span, subtotalSpan);
 
           const removeButton = document.createElement("button");
           removeButton.type = "button";
@@ -335,12 +356,14 @@
           row.append(info, removeButton);
           quoteList.appendChild(row);
         });
+        quoteTotal.textContent = `$${total} MXN`;
       }
 
       sendQuote.addEventListener("click", () => {
         if (!quote.length) return;
-        const lines = quote.map((item) => `- ${item.quantity} x ${item.name} (${item.category}) | Tipo: ${item.type} | Color: ${item.color}${item.note ? ` | Nota: ${item.note}` : ""}`);
-        const message = `Hola Eventland, quiero cotizar estos articulos:\n\n${lines.join("\n")}`;
+        const total = quote.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        const lines = quote.map((item) => `- ${item.quantity} x ${item.name} (${item.category}) | Tipo: ${item.type} | Color: ${item.color}${item.note ? ` | Nota: ${item.note}` : ""} | $${item.price * item.quantity} MXN`);
+        const message = `Hola Eventland, quiero cotizar estos articulos:\n\n${lines.join("\n")}\n\nTotal estimado: $${total} MXN\n(Precio de referencia, sujeto a confirmacion de disponibilidad).`;
         window.location.href = buildWhatsappUrl(message);
       });
 

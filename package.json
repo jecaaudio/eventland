@@ -1,0 +1,10 @@
+{
+  "name": "eventland",
+  "private": true,
+  "scripts": {
+    "test": "node tests/smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

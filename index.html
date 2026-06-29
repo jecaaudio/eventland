@@ -3,11 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Eventland | Eventos, decoraci&oacute;n y producci&oacute;n por JECA Audio</title>
+    <title>Eventland | Eventos, decoraci&oacute;n y producci&oacute;n</title>
     <meta
       name="description"
-      content="Eventland organiza, decora y produce eventos con iluminaci&oacute;n, sonido, fotograf&iacute;a y apoyo t&eacute;cnico de JECA Audio."
+      content="Eventland organiza, decora y produce eventos con iluminaci&oacute;n, sonido y apoyo t&eacute;cnico profesional."
     />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Eventland | Eventos, decoraci&oacute;n y producci&oacute;n" />
+    <meta property="og:description" content="Eventland organiza, decora y produce eventos con iluminaci&oacute;n, sonido y apoyo t&eacute;cnico profesional." />
+    <meta property="og:image" content="assets/eventland-logo-small.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eventland | Eventos, decoraci&oacute;n y producci&oacute;n" />
+    <meta name="twitter:description" content="Eventland organiza, decora y produce eventos con iluminaci&oacute;n, sonido y apoyo t&eacute;cnico profesional." />
+    <meta name="twitter:image" content="assets/eventland-logo-small.jpg" />
     <link rel="icon" type="image/svg+xml" href="assets/eventland-mark.svg" />
     <link rel="apple-touch-icon" href="assets/eventland-mark.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,6 +25,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="config.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -26,14 +35,14 @@
         </span>
         <span>
           <strong>Eventland</strong>
-          <small>by JECA Audio</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Principal">
+      <nav class="nav" id="main-nav" aria-label="Principal">
         <a href="#servicios" data-i18n="navServices">Servicios</a>
         <a href="#paquetes" data-i18n="navPackages">Paquetes</a>
         <a href="#proceso" data-i18n="navProcess">Proceso</a>
         <a href="#contacto" data-i18n="navContact">Contacto</a>
+        <a href="rentas.html" data-i18n="navRentals">Rentas</a>
       </nav>
       <div class="header-actions">
         <div class="language-switch" aria-label="Cambiar idioma">
@@ -41,6 +50,11 @@
           <button type="button" class="lang-option" data-lang="en">EN</button>
         </div>
         <a class="header-cta" href="#contacto" data-i18n="quoteCta">Cotizar evento</a>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
@@ -56,8 +70,8 @@
           <p class="eyebrow" data-i18n="heroEyebrow">Eventos completos en un solo equipo</p>
           <h1>Eventland</h1>
           <p class="hero-copy" data-i18n="heroCopy">
-            Decoraci&oacute;n, organizaci&oacute;n, producci&oacute;n, iluminaci&oacute;n, sonido y fotograf&iacute;a para eventos memorables,
-            con la calidad t&eacute;cnica de JECA Audio.
+            Decoraci&oacute;n, organizaci&oacute;n, producci&oacute;n, iluminaci&oacute;n y sonido para eventos memorables,
+            con calidad t&eacute;cnica profesional.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#contacto" data-i18n="heroPrimary">Quiero mi evento</a>
@@ -94,18 +108,13 @@
           </article>
           <article class="service-card">
             <span>04</span>
-            <h3 data-i18n="serviceSoundTitle">Sonido JECA Audio</h3>
+            <h3 data-i18n="serviceSoundTitle">Sonido profesional</h3>
             <p data-i18n="serviceSoundCopy">Audio profesional para ceremonia, recepci&oacute;n, m&uacute;sica, animaci&oacute;n, presentaciones y producci&oacute;n en vivo.</p>
           </article>
           <article class="service-card">
             <span>05</span>
             <h3 data-i18n="serviceProductionTitle">Producci&oacute;n</h3>
             <p data-i18n="serviceProductionCopy">Montaje t&eacute;cnico, manejo de tiempos, soporte de evento, tarima, micr&oacute;fonos y experiencia audiovisual.</p>
-          </article>
-          <article class="service-card">
-            <span>06</span>
-            <h3 data-i18n="servicePhotoTitle">Fotograf&iacute;a</h3>
-            <p data-i18n="servicePhotoCopy">Cobertura de momentos importantes, detalles, invitados, ambiente y contenido para recordar y compartir.</p>
           </article>
         </div>
       </section>
@@ -123,7 +132,7 @@
             <ul>
               <li data-i18n="essentialItem1">Coordinaci&oacute;n b&aacute;sica</li>
               <li data-i18n="essentialItem2">Decoraci&oacute;n puntual</li>
-              <li data-i18n="essentialItem3">Sonido JECA Audio</li>
+              <li data-i18n="essentialItem3">Sonido profesional</li>
               <li data-i18n="essentialItem4">Iluminaci&oacute;n ambiental</li>
             </ul>
             <a href="#contacto" data-i18n="essentialCta">Solicitar precio</a>
@@ -137,7 +146,7 @@
               <li data-i18n="completeItem1">Organizaci&oacute;n y montaje</li>
               <li data-i18n="completeItem2">Decoraci&oacute;n personalizada</li>
               <li data-i18n="completeItem3">Sonido e iluminaci&oacute;n profesional</li>
-              <li data-i18n="completeItem4">Producci&oacute;n y fotograf&iacute;a</li>
+              <li data-i18n="completeItem4">Producci&oacute;n t&eacute;cnica</li>
             </ul>
             <a href="#contacto" data-i18n="completeCta">Cotizar ahora</a>
           </article>
@@ -149,7 +158,7 @@
               <li data-i18n="premiumItem1">Direcci&oacute;n t&eacute;cnica</li>
               <li data-i18n="premiumItem2">Iluminaci&oacute;n esc&eacute;nica</li>
               <li data-i18n="premiumItem3">Audio profesional avanzado</li>
-              <li data-i18n="premiumItem4">Fotograf&iacute;a y contenido</li>
+              <li data-i18n="premiumItem4">Producci&oacute;n audiovisual</li>
             </ul>
             <a href="#contacto" data-i18n="premiumCta">Hablar con Eventland</a>
           </article>
@@ -175,7 +184,7 @@
           <div>
             <strong>3</strong>
             <h3 data-i18n="step3Title">Producimos el evento</h3>
-            <p data-i18n="step3Copy">Coordinamos montaje, sonido, luces, decoraci&oacute;n, fotograf&iacute;a y ejecuci&oacute;n del d&iacute;a.</p>
+            <p data-i18n="step3Copy">Coordinamos montaje, sonido, luces, decoraci&oacute;n y ejecuci&oacute;n del d&iacute;a.</p>
           </div>
         </div>
       </section>
@@ -188,7 +197,7 @@
         <form class="contact-form">
           <label>
             <span data-i18n="nameLabel">Nombre</span>
-            <input type="text" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="namePlaceholder" required />
+            <input type="text" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="namePlaceholder" required maxlength="80" />
           </label>
           <label>
             <span data-i18n="typeLabel">Tipo de evento</span>
@@ -202,11 +211,33 @@
           </label>
           <label>
             <span data-i18n="dateLabel">Fecha aproximada</span>
-            <input type="text" name="fecha" placeholder="Ej. Julio 2026" data-i18n-placeholder="datePlaceholder" />
+            <input type="text" name="fecha" placeholder="Ej. Julio 2026" data-i18n-placeholder="datePlaceholder" maxlength="60" />
+          </label>
+          <label>
+            <span data-i18n="guestsLabel">Cantidad de invitados</span>
+            <input type="number" name="invitados" placeholder="Ej. 80" data-i18n-placeholder="guestsPlaceholder" min="1" max="9999" />
+          </label>
+          <label>
+            <span data-i18n="outdoorLabel">&iquest;El evento es en exterior?</span>
+            <select name="exterior">
+              <option value="" data-i18n="optionOutdoorBlank">Selecciona una opci&oacute;n</option>
+              <option data-i18n="optionOutdoorYes">S&iacute;, es en exterior</option>
+              <option data-i18n="optionOutdoorNo">No, es en interior</option>
+              <option data-i18n="optionOutdoorBoth">Tiene espacios de ambos</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="themeLabel">Tema de la decoraci&oacute;n</span>
+            <input type="text" name="tema" placeholder="Ej. Boho, elegante, tropical..." data-i18n-placeholder="themePlaceholder" maxlength="120" />
+          </label>
+          <label>
+            <span data-i18n="photosLabel">Fotos de inspiraci&oacute;n (opcional)</span>
+            <input type="file" name="fotos" accept="image/*" multiple />
+            <small class="field-hint" data-i18n="photosHint">No podemos adjuntar las fotos automaticamente: en cuanto se abra WhatsApp, env&iacute;alas ahi mismo en el chat.</small>
           </label>
           <label>
             <span data-i18n="messageLabel">Mensaje</span>
-            <textarea name="mensaje" placeholder="Cu&eacute;ntanos qu&eacute; necesitas" data-i18n-placeholder="messagePlaceholder"></textarea>
+            <textarea name="mensaje" placeholder="Cu&eacute;ntanos qu&eacute; necesitas" data-i18n-placeholder="messagePlaceholder" maxlength="1000"></textarea>
           </label>
           <button class="button primary full" type="submit" data-i18n="submitButton">
             Enviar solicitud
@@ -216,22 +247,23 @@
     </main>
 
     <footer class="footer">
-      <p>Eventland by JECA Audio</p>
-      <p data-i18n="footerCopy">Organizaci&oacute;n, decoraci&oacute;n, sonido, iluminaci&oacute;n, producci&oacute;n y fotograf&iacute;a para eventos.</p>
+      <p>Eventland</p>
+      <p data-i18n="footerCopy">Organizaci&oacute;n, decoraci&oacute;n, sonido, iluminaci&oacute;n y producci&oacute;n para eventos.</p>
     </footer>
     <script>
       const translations = {
         es: {
-          pageTitle: "Eventland | Eventos, decoraci\u00f3n y producci\u00f3n por JECA Audio",
-          metaDescription: "Eventland organiza, decora y produce eventos con iluminaci\u00f3n, sonido, fotograf\u00eda y apoyo t\u00e9cnico de JECA Audio.",
+          pageTitle: "Eventland | Eventos, decoraci\u00f3n y producci\u00f3n",
+          metaDescription: "Eventland organiza, decora y produce eventos con iluminaci\u00f3n, sonido y apoyo t\u00e9cnico profesional.",
           heroAlt: "Sal\u00f3n de eventos decorado con iluminaci\u00f3n profesional",
           navServices: "Servicios",
           navPackages: "Paquetes",
           navProcess: "Proceso",
           navContact: "Contacto",
+          navRentals: "Rentas",
           quoteCta: "Cotizar evento",
           heroEyebrow: "Eventos completos en un solo equipo",
-          heroCopy: "Decoraci\u00f3n, organizaci\u00f3n, producci\u00f3n, iluminaci\u00f3n, sonido y fotograf\u00eda para eventos memorables, con la calidad t\u00e9cnica de JECA Audio.",
+          heroCopy: "Decoraci\u00f3n, organizaci\u00f3n, producci\u00f3n, iluminaci\u00f3n y sonido para eventos memorables, con calidad t\u00e9cnica profesional.",
           heroPrimary: "Quiero mi evento",
           heroSecondary: "Ver paquetes",
           servicesEyebrow: "Lo que ofrecemos",
@@ -243,19 +275,17 @@
           serviceDecorCopy: "Concepto visual, montaje, ambientaci\u00f3n, mesas, flores, fondos y detalles que elevan la experiencia.",
           serviceLightingTitle: "Iluminaci\u00f3n",
           serviceLightingCopy: "Luces ambientales, efectos para pista, escenarios, entradas especiales y momentos destacados.",
-          serviceSoundTitle: "Sonido JECA Audio",
+          serviceSoundTitle: "Sonido profesional",
           serviceSoundCopy: "Audio profesional para ceremonia, recepci\u00f3n, m\u00fasica, animaci\u00f3n, presentaciones y producci\u00f3n en vivo.",
           serviceProductionTitle: "Producci\u00f3n",
           serviceProductionCopy: "Montaje t\u00e9cnico, manejo de tiempos, soporte de evento, tarima, micr\u00f3fonos y experiencia audiovisual.",
-          servicePhotoTitle: "Fotograf\u00eda",
-          servicePhotoCopy: "Cobertura de momentos importantes, detalles, invitados, ambiente y contenido para recordar y compartir.",
           packagesEyebrow: "Paquetes",
           packagesTitle: "Opciones claras para cada evento",
           essentialTitle: "Evento Esencial",
           essentialCopy: "Para celebraciones peque\u00f1as que necesitan orden, estilo y sonido confiable.",
           essentialItem1: "Coordinaci\u00f3n b\u00e1sica",
           essentialItem2: "Decoraci\u00f3n puntual",
-          essentialItem3: "Sonido JECA Audio",
+          essentialItem3: "Sonido profesional",
           essentialItem4: "Iluminaci\u00f3n ambiental",
           essentialCta: "Solicitar precio",
           popularTag: "M\u00e1s vendido",
@@ -264,14 +294,14 @@
           completeItem1: "Organizaci\u00f3n y montaje",
           completeItem2: "Decoraci\u00f3n personalizada",
           completeItem3: "Sonido e iluminaci\u00f3n profesional",
-          completeItem4: "Producci\u00f3n y fotograf\u00eda",
+          completeItem4: "Producci\u00f3n t\u00e9cnica",
           completeCta: "Cotizar ahora",
           premiumTitle: "Producci\u00f3n Premium",
           premiumCopy: "Para eventos corporativos, lanzamientos, conciertos peque\u00f1os y experiencias de alto impacto.",
           premiumItem1: "Direcci\u00f3n t\u00e9cnica",
           premiumItem2: "Iluminaci\u00f3n esc\u00e9nica",
           premiumItem3: "Audio profesional avanzado",
-          premiumItem4: "Fotograf\u00eda y contenido",
+          premiumItem4: "Producci\u00f3n audiovisual",
           premiumCta: "Hablar con Eventland",
           processEyebrow: "C\u00f3mo trabajamos",
           processTitle: "De la idea al montaje final",
@@ -280,7 +310,7 @@
           step2Title: "Armamos la propuesta",
           step2Copy: "Seleccionamos servicios, equipo t\u00e9cnico, decoraci\u00f3n y plan de producci\u00f3n.",
           step3Title: "Producimos el evento",
-          step3Copy: "Coordinamos montaje, sonido, luces, decoraci\u00f3n, fotograf\u00eda y ejecuci\u00f3n del d\u00eda.",
+          step3Copy: "Coordinamos montaje, sonido, luces, decoraci\u00f3n y ejecuci\u00f3n del d\u00eda.",
           contactEyebrow: "Cotiza tu fecha",
           contactTitle: "Hagamos que tu evento se vea y se escuche incre\u00edble.",
           nameLabel: "Nombre",
@@ -293,27 +323,43 @@
           optionOther: "Otro evento",
           dateLabel: "Fecha aproximada",
           datePlaceholder: "Ej. Julio 2026",
+          guestsLabel: "Cantidad de invitados",
+          guestsPlaceholder: "Ej. 80",
+          outdoorLabel: "\u00bfEl evento es en exterior?",
+          optionOutdoorBlank: "Selecciona una opci\u00f3n",
+          optionOutdoorYes: "S\u00ed, es en exterior",
+          optionOutdoorNo: "No, es en interior",
+          optionOutdoorBoth: "Tiene espacios de ambos",
+          themeLabel: "Tema de la decoraci\u00f3n",
+          themePlaceholder: "Ej. Boho, elegante, tropical...",
+          photosLabel: "Fotos de inspiraci\u00f3n (opcional)",
+          photosHint: "No podemos adjuntar las fotos autom\u00e1ticamente: en cuanto se abra WhatsApp, env\u00edalas ahi mismo en el chat.",
           messageLabel: "Mensaje",
           messagePlaceholder: "Cu\u00e9ntanos qu\u00e9 necesitas",
           submitButton: "Enviar solicitud",
-          footerCopy: "Organizaci\u00f3n, decoraci\u00f3n, sonido, iluminaci\u00f3n, producci\u00f3n y fotograf\u00eda para eventos.",
+          footerCopy: "Organizaci\u00f3n, decoraci\u00f3n, sonido, iluminaci\u00f3n y producci\u00f3n para eventos.",
           emailSubject: "Cotizaci\u00f3n Eventland",
           emailName: "Nombre",
           emailType: "Tipo de evento",
           emailDate: "Fecha aproximada",
+          emailGuests: "Cantidad de invitados",
+          emailOutdoor: "\u00bfEvento en exterior?",
+          emailTheme: "Tema de decoraci\u00f3n",
           emailMessage: "Mensaje",
+          emailPhotosNote: "Adjunto fotos de inspiraci\u00f3n del tema en este chat de WhatsApp.",
         },
         en: {
-          pageTitle: "Eventland | Event planning, decor and production by JECA Audio",
-          metaDescription: "Eventland organizes, decorates and produces events with lighting, sound, photography and technical support by JECA Audio.",
-          heroAlt: "Event hall with professional lighting, stage, sound system and photographer",
+          pageTitle: "Eventland | Event planning, decor and production",
+          metaDescription: "Eventland organizes, decorates and produces events with lighting, sound and professional technical support.",
+          heroAlt: "Event hall with professional lighting, stage and sound system",
           navServices: "Services",
           navPackages: "Packages",
           navProcess: "Process",
           navContact: "Contact",
+          navRentals: "Rentals",
           quoteCta: "Get a quote",
           heroEyebrow: "Full events, one team",
-          heroCopy: "Decor, planning, production, lighting, sound and photography for memorable events, with the technical quality of JECA Audio.",
+          heroCopy: "Decor, planning, production, lighting and sound for memorable events, with professional technical quality.",
           heroPrimary: "Plan my event",
           heroSecondary: "View packages",
           servicesEyebrow: "What we offer",
@@ -325,19 +371,17 @@
           serviceDecorCopy: "Visual concept, setup, atmosphere, tables, florals, backdrops and details that elevate the experience.",
           serviceLightingTitle: "Lighting",
           serviceLightingCopy: "Ambient lighting, dance floor effects, stages, special entrances and highlighted moments.",
-          serviceSoundTitle: "JECA Audio Sound",
+          serviceSoundTitle: "Professional Sound",
           serviceSoundCopy: "Professional audio for ceremonies, receptions, music, hosting, presentations and live production.",
           serviceProductionTitle: "Production",
           serviceProductionCopy: "Technical setup, timing, event support, stage, microphones and audiovisual experience.",
-          servicePhotoTitle: "Photography",
-          servicePhotoCopy: "Coverage of important moments, details, guests, atmosphere and content to remember and share.",
           packagesEyebrow: "Packages",
           packagesTitle: "Clear options for every event",
           essentialTitle: "Essential Event",
           essentialCopy: "For smaller celebrations that need structure, style and reliable sound.",
           essentialItem1: "Basic coordination",
           essentialItem2: "Focused decor",
-          essentialItem3: "JECA Audio sound",
+          essentialItem3: "Professional sound",
           essentialItem4: "Ambient lighting",
           essentialCta: "Request pricing",
           popularTag: "Most popular",
@@ -346,14 +390,14 @@
           completeItem1: "Planning and setup",
           completeItem2: "Custom decor",
           completeItem3: "Professional sound and lighting",
-          completeItem4: "Production and photography",
+          completeItem4: "Technical production",
           completeCta: "Get a quote",
           premiumTitle: "Premium Production",
           premiumCopy: "For corporate events, launches, small concerts and high-impact experiences.",
           premiumItem1: "Technical direction",
           premiumItem2: "Stage lighting",
           premiumItem3: "Advanced professional audio",
-          premiumItem4: "Photography and content",
+          premiumItem4: "Audiovisual production",
           premiumCta: "Talk to Eventland",
           processEyebrow: "How we work",
           processTitle: "From the idea to the final setup",
@@ -362,7 +406,7 @@
           step2Title: "We build the proposal",
           step2Copy: "We select services, technical equipment, decor and the production plan.",
           step3Title: "We produce the event",
-          step3Copy: "We coordinate setup, sound, lighting, decor, photography and event-day execution.",
+          step3Copy: "We coordinate setup, sound, lighting, decor and event-day execution.",
           contactEyebrow: "Request your date",
           contactTitle: "Let us make your event look and sound incredible.",
           nameLabel: "Name",
@@ -375,15 +419,30 @@
           optionOther: "Other event",
           dateLabel: "Approximate date",
           datePlaceholder: "Ex. July 2026",
+          guestsLabel: "Number of guests",
+          guestsPlaceholder: "Ex. 80",
+          outdoorLabel: "Is the event outdoors?",
+          optionOutdoorBlank: "Select an option",
+          optionOutdoorYes: "Yes, it's outdoors",
+          optionOutdoorNo: "No, it's indoors",
+          optionOutdoorBoth: "Both indoor and outdoor",
+          themeLabel: "Decoration theme",
+          themePlaceholder: "Ex. Boho, elegant, tropical...",
+          photosLabel: "Inspiration photos (optional)",
+          photosHint: "We can't attach the photos automatically: once WhatsApp opens, send them there in the chat.",
           messageLabel: "Message",
           messagePlaceholder: "Tell us what you need",
           submitButton: "Send request",
-          footerCopy: "Planning, decor, sound, lighting, production and photography for events.",
+          footerCopy: "Planning, decor, sound, lighting and production for events.",
           emailSubject: "Eventland Quote Request",
           emailName: "Name",
           emailType: "Event type",
           emailDate: "Approximate date",
+          emailGuests: "Number of guests",
+          emailOutdoor: "Outdoors event?",
+          emailTheme: "Decoration theme",
           emailMessage: "Message",
+          emailPhotosNote: "Attaching theme inspiration photos in this WhatsApp chat.",
         },
       };
 
@@ -398,6 +457,10 @@
         document.documentElement.lang = language;
         document.title = copy.pageTitle;
         document.querySelector("meta[name='description']").setAttribute("content", copy.metaDescription);
+        document.querySelector("meta[property='og:title']").setAttribute("content", copy.pageTitle);
+        document.querySelector("meta[property='og:description']").setAttribute("content", copy.metaDescription);
+        document.querySelector("meta[name='twitter:title']").setAttribute("content", copy.pageTitle);
+        document.querySelector("meta[name='twitter:description']").setAttribute("content", copy.metaDescription);
 
         document.querySelectorAll("[data-i18n]").forEach((element) => {
           element.textContent = copy[element.dataset.i18n];
@@ -422,21 +485,63 @@
         button.addEventListener("click", () => setLanguage(button.dataset.lang));
       });
 
+      const menuToggle = document.querySelector("#menu-toggle");
+      const mainNav = document.querySelector("#main-nav");
+
+      function closeMenu() {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mainNav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
       form.addEventListener("submit", (event) => {
         event.preventDefault();
 
+        const nameField = form.querySelector('[name="nombre"]');
+        if (!nameField.value.trim()) {
+          nameField.value = "";
+          nameField.reportValidity();
+          return;
+        }
+
         const copy = translations[currentLanguage];
         const data = new FormData(form);
-        const body = [
+        const photosField = form.querySelector('[name="fotos"]');
+        const lines = [
+          `${copy.emailSubject}`,
+          "",
           `${copy.emailName}: ${data.get("nombre") || ""}`,
           `${copy.emailType}: ${data.get("tipo") || ""}`,
           `${copy.emailDate}: ${data.get("fecha") || ""}`,
-          "",
-          `${copy.emailMessage}:`,
-          data.get("mensaje") || "",
-        ].join("\n");
+        ];
 
-        window.location.href = `mailto:contacto@jecaaudio.com?subject=${encodeURIComponent(copy.emailSubject)}&body=${encodeURIComponent(body)}`;
+        if (data.get("invitados")) {
+          lines.push(`${copy.emailGuests}: ${data.get("invitados")}`);
+        }
+        if (data.get("exterior")) {
+          lines.push(`${copy.emailOutdoor}: ${data.get("exterior")}`);
+        }
+        if (data.get("tema")) {
+          lines.push(`${copy.emailTheme}: ${data.get("tema")}`);
+        }
+
+        lines.push("", `${copy.emailMessage}:`, data.get("mensaje") || "");
+
+        if (photosField.files.length) {
+          lines.push("", copy.emailPhotosNote);
+        }
+
+        const message = lines.join("\n");
+
+        window.location.href = `https://wa.me/${EVENTLAND_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
       });
 
       setLanguage(currentLanguage);

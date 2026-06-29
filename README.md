@@ -1,13 +1,13 @@
 # Eventland
 
-Pagina web bilingue para vender servicios de organizacion, decoracion y produccion de eventos, con sonido e iluminacion proporcionados por JECA Audio.
+Pagina web bilingue para vender servicios de organizacion, decoracion y produccion de eventos.
 
 ## Servicios incluidos
 
 - Organizacion de eventos / Event planning
 - Decoracion y ambientacion / Decor and ambiance
 - Iluminacion profesional / Professional lighting
-- Sonido por JECA Audio / Sound by JECA Audio
+- Sonido profesional / Professional sound
 - Produccion tecnica / Technical production
 - Fotografia / Photography
 
@@ -16,7 +16,7 @@ Pagina web bilingue para vender servicios de organizacion, decoracion y producci
 - `index.html`: landing page principal (servicios, paquetes, contacto), bilingue ES/EN.
 - `rentas.html`: cotizador de inventario de rentas (manteles, mesas, sillas, decoracion).
 - `styles.css`: estilos visuales y responsive compartidos por ambas paginas.
-- `config.js`: configuracion centralizada (email de contacto, numero de WhatsApp).
+- `config.js`: configuracion centralizada (numero de WhatsApp).
 - `assets/`: logos, favicon e iconos.
 
 ## Como correr el sitio localmente
@@ -33,16 +33,15 @@ Luego abre `http://localhost:8000/index.html` o `http://localhost:8000/rentas.ht
 
 ## Como actualizar el contacto
 
-El email y el numero de WhatsApp se definen una sola vez en `config.js`:
+El numero de WhatsApp se define una sola vez en `config.js`:
 
 ```js
 const EVENTLAND_CONFIG = {
-  contactEmail: "contacto@jecaaudio.com",
   whatsappNumber: "15025332210",
 };
 ```
 
-Cambialos ahi y se reflejan automaticamente en ambas paginas.
+Cambialo ahi y se refleja automaticamente en ambas paginas (formulario de contacto y cotizador de rentas).
 
 ## Como agregar o editar productos de renta
 
@@ -78,6 +77,6 @@ npm test
 
 ## Limitaciones conocidas
 
-- No hay backend: el formulario de contacto abre el cliente de correo del usuario (`mailto:`) y el cotizador de rentas abre WhatsApp; no se guarda nada en un servidor.
+- No hay backend: tanto el formulario de contacto como el cotizador de rentas abren WhatsApp; no se guarda nada en un servidor.
 - No hay linting automatizado de estilo de codigo (solo la revision funcional de CI descrita arriba).
 - Las imagenes de categoria usan URLs de Unsplash; si el servicio cae, las imagenes no cargan.
